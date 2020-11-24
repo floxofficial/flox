@@ -1,0 +1,10 @@
+{
+  "arch": "amd64",
+  "name": "Fullet",
+  "dest": "./dist/installers/",
+  "src": "./dist/Fullet-linux-x64",
+  "icon": "./src/images/icons/256x256.png",
+  "categories": [
+    "Utility"
+  ]
+}
