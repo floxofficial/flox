@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import store from './store';
-import App from './components';
+import App from './pages';
 import history from './history';
+import './styles/base.less';
 
 (async () => {
   render(

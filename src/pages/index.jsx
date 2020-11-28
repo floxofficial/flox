@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React, { Fragment, Component } from 'react';
 import { Router, Switch, withRouter, Route } from 'react-router-dom';
 
-import HomePage from './pages/HomePage';
+import HomePage from './HomePage';
 
 import history from 'Root/history';
 
