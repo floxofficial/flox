@@ -6,7 +6,6 @@ class HomePage extends Component {
   render() {
     return (
       <>
-        <h1 className={styles.test}>hi</h1>
         <Alert variant="success">
           <Alert.Heading>Hey, nice to see you</Alert.Heading>
           <p>
