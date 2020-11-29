@@ -1,5 +1,71 @@
+@import '~Root/styles/var';
 
 :local(.logo) {
   width: 100px;
   height: 38px;
+}
+
+:local(.dropdown) {
+  button {
+    width: 119px;
+    height: 32px;
+    font-size: 14px;
+    text-align: left;
+    display: flex;
+  }
+
+  button::before {
+    content: "•";
+    font-weight: bold;
+    font-size: 28px;
+    margin-right: 6px;
+    margin-top: -13px;
+  }
+
+  button::after {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: @Mercury;
+  }
+
+  button,
+  button:hover,
+  button:focus,
+  button:active,
+  button:not(:disabled):not(.disabled) {
+    box-shadow: none !important;
+    background: white !important;
+    border: 1px solid @Mercury !important;
+    color: @Shark !important;
+  }
+
+  .dropdown-menu {
+    width: 119px;
+    min-width: 119px;
+    border: 1px solid @Mercury !important;
+    padding: 0 !important;
+
+    a {
+      font-size: 15px;
+      color: @Shark;
+    }
+
+    a:active {
+      background: white !important;
+      color: @Shark !important;
+    }
+  }
+}
+
+:local(.main) {
+  button::before {
+    color: @Keppel;
+  }
+}
+
+:local(.test) {
+  button::before {
+    color: @Tangerine;
+  }
 }

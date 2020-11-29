@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
+import classNames from 'classnames';
 import logo from 'Root/assets/images/logo.png';
 import styles from './styles.less';
 
-const Header = props => (
-  <div>
-    <div className="row justify-content-between">
-      <div className="col-auto">
-        <img src={logo} alt="Fullet" className={styles.logo} />
-      </div>
-      <div className="col-auto">
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+const Header = (props) => {
+  const items = [
+    { value: 'main', label: 'Mainet' },
+    { value: 'test', label: 'Testnet' },
+  ];
+  const [selected, setSelected] = useState(items[0]);
+  return (
+    <div>
+      <div className="row justify-content-between align-items-center">
+        <div className="col-auto">
+          <img src={logo} alt="Fullet" className={styles.logo} />
+        </div>
+        <div className="col-auto">
+          <div className={classNames(styles.dropdown,
+            selected === items[0] ? styles.main : styles.test)}
+          >
+            <Dropdown>
+              <Dropdown.Toggle id="dropdown-basic">
+                {selected.label}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                {items.map(item => (
+                  <Dropdown.Item eventKey={item.value} onClick={() => { setSelected(item); }}>
+                    {item.label}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 Header.propTypes = {
 
