@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
 import classNames from 'classnames';
@@ -27,9 +27,11 @@ const Header = (props) => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {items.map(item => (
-                  <Dropdown.Item eventKey={item.value} onClick={() => { setSelected(item); }}>
-                    {item.label}
-                  </Dropdown.Item>
+                  <Fragment key={item.value}>
+                    <Dropdown.Item eventKey={item.value} onClick={() => { setSelected(item); }}>
+                      {item.label}
+                    </Dropdown.Item>
+                  </Fragment>
                 ))}
               </Dropdown.Menu>
             </Dropdown>

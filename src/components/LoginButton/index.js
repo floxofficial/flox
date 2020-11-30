@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.less';
 
-const LoginButton = ({ item }) => (
-  <div className={styles.box}>
+const LoginButton = ({ item, history }) => (
+  <div className={styles.box} onClick={() => { history.push(item.link); }}>
     <div className="row align-items-center">
       <div className="col-auto pr-3">
         <div className={styles.icon}><span className={item.icon} /></div>
