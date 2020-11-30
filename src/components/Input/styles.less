@@ -1,0 +1,60 @@
+@import '~Root/styles/var';
+
+.label-primary {
+  font-size: 16px;
+  font-weight: 500;
+  color: @Shark;
+  margin-bottom: 0;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  color: @Shark;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  color: @SpunPearl;
+}
+
+:local(.group) {
+  display: flex;
+  border: 1px solid @Mercury;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  transition: 0.3s ease-in-out;
+}
+
+:local(.group):focus,
+:local(.group):focus-within {
+  border: 1px solid @PersianBlue;
+}
+
+:local(.icon) {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+
+  .icon-eye {
+    font-size: 19px;
+    color: @Gray;
+    margin-right: 0;
+    margin-top: 1px;
+  }
+}
+
+:local(.icon):focus {
+  outline: none;
+}
