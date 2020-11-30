@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Layout from 'Root/components/Layout';
 import HomePage from './HomePage';
@@ -11,9 +11,11 @@ class App extends Component {
     return (
       <Fragment>
         <Layout>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/create-wallet" component={CreateWallet} />
-          <Redirect to="/" />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/create-wallet" component={CreateWallet} />
+            <Redirect to="/" component={HomePage} />
+          </Switch>
         </Layout>
       </Fragment>
     );
