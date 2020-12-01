@@ -11,10 +11,10 @@ class HomePage extends Component {
         title: 'Create Wallet', desc: 'Create a new wallet', icon: 'icon-plus-math', link: route.createWalletPage,
       },
       {
-        title: 'Private key', desc: 'Unlock with private key', icon: 'icon-restore', link: route.keyStorePage,
+        title: 'Private key', desc: 'Unlock with private key', icon: 'icon-restore', link: route.privateKeyPage,
       },
       {
-        title: 'Keystore file', desc: 'Unlock with keystore file', icon: 'icon-file', link: '/',
+        title: 'Keystore file', desc: 'Unlock with keystore file', icon: 'icon-file', link: route.keyStorePage,
       },
       {
         title: 'Ledger', desc: 'Sign and connect with ledger', icon: 'icon-ledger', link: '/',
