@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginButton from 'Root/components/LoginButton';
 import * as route from 'Root/static/routes';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import styles from './styles.less';
 
 class HomePage extends Component {
@@ -11,7 +11,7 @@ class HomePage extends Component {
         title: 'Create Wallet', desc: 'Create a new wallet', icon: 'icon-plus-math', link: route.createWalletPage,
       },
       {
-        title: 'Private key', desc: 'Unlock with private key', icon: 'icon-restore', link: '/',
+        title: 'Private key', desc: 'Unlock with private key', icon: 'icon-restore', link: route.keyStorePage,
       },
       {
         title: 'Keystore file', desc: 'Unlock with keystore file', icon: 'icon-file', link: '/',

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './styles.less';
 
 const Button = ({
-  disabled, content, variant, size, fontSize, type, onClick, className, fontWeight,
+  disabled, content, variant, size, fontSize, type, onClick, className, fontWeight, children,
 }) => (
   <button
     type={type}
@@ -13,12 +13,13 @@ const Button = ({
     onClick={onClick}
     style={{ width: `${size}`, fontSize: `${fontSize}px`, fontWeight: `${fontWeight}` }}
   >
-    {content}
+    {children || content}
   </button>
 );
 
 Button.defaultProps = {
   disabled: false,
+  content: '',
   onClick: () => {},
   type: 'button',
   size: '',
@@ -29,7 +30,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   disabled: PropTypes.bool,
-  content: PropTypes.any.isRequired,
+  content: PropTypes.any,
   variant: PropTypes.string.isRequired,
   size: PropTypes.string,
   type: PropTypes.string,
