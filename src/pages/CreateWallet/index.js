@@ -7,11 +7,15 @@ import styles from './styles.less';
 
 class CreateWallet extends Component {
   onSubmit(values) {
-    console.warn(values);
+    // console.warn(values);
   }
 
   validateForm(values) {
-    // console.warn(values);
+    const errors = {};
+    if (values.password && values.password.length < 8) {
+      errors.password = 'Password must be 8 or more characters.';
+    }
+    return errors;
   }
 
   render() {
@@ -47,7 +51,7 @@ class CreateWallet extends Component {
                     size="100%"
                     fontWeight={500}
                     className="mt-4"
-                    disabled={invalid || submitting}
+                    disabled={submitting}
                   />
                 </form>
               )}

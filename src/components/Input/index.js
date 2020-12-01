@@ -37,20 +37,26 @@ const Input = ({
 
     return null;
   };
+
+  const isError = meta && (meta.error || meta.submitError) && meta.touched;
+
   return (
-    <div className={classNames(styles.group)}>
-      <input
-        type={visibleType}
-        className="input"
-        value={defaultValue}
-        disabled={disabled}
-        placeholder={placeholder}
-        style={{ width: `${size}`, fontSize: `${fontSize}px`, height: `${height}px` }}
-        name={name}
-        {...input}
-        ref={inputRef}
-      />
-      {generateBtn()}
+    <div>
+      <div className={classNames(styles.group, isError && styles.inputError)}>
+        <input
+          type={visibleType}
+          className="input"
+          value={defaultValue}
+          disabled={disabled}
+          placeholder={placeholder}
+          style={{ width: `${size}`, fontSize: `${fontSize}px`, height: `${height}px` }}
+          name={name}
+          {...input}
+          ref={inputRef}
+        />
+        {generateBtn()}
+      </div>
+      {isError && (<p className="error">{meta.error || meta.submitError}</p>)}
     </div>
   );
 };
