@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
+import { withRouter } from 'react-router-dom';
+import { walletInfoPage } from 'Root/static/routes';
 import Title from 'Root/components/Title';
 import Button from 'Root/components/Button';
 import Input from 'Root/components/Input';
@@ -51,6 +53,7 @@ class CreateWallet extends Component {
                   fontWeight={500}
                   className="mt-4"
                   disabled={submitting}
+                  onClick={() => { this.props.history.push(walletInfoPage); }}
                 />
               </form>
             )}
@@ -61,4 +64,4 @@ class CreateWallet extends Component {
   }
 }
 
-export default CreateWallet;
+export default withRouter(CreateWallet);

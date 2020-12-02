@@ -7,6 +7,7 @@ import HomePage from './HomePage';
 import CreateWallet from './CreateWallet';
 import KeyStore from './KeyStore';
 import PrivateKey from './PrivateKey';
+import WalletInfo from "./WalletInfo";
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path={route.createWalletPage} component={CreateWallet} />
             <Route exact path={route.privateKeyPage} component={PrivateKey} />
             <Route exact path={route.keyStorePage} component={KeyStore} />
+            <Route exact path={route.walletInfoPage} component={WalletInfo} />
             <Redirect to={route.homePage} component={HomePage} />
           </Switch>
         </Layout>

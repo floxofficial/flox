@@ -1,7 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import classNames from 'classnames';
+import { homePage } from 'Root/static/routes';
 import logo from 'Root/assets/images/logo.png';
 import styles from './styles.less';
 
@@ -15,7 +17,7 @@ const Header = (props) => {
     <div>
       <div className="row justify-content-between align-items-center">
         <div className="col-auto">
-          <img src={logo} alt="Fullet" className={styles.logo} />
+          <Link to={homePage}><img src={logo} alt="Fullet" className={styles.logo} /></Link>
         </div>
         <div className="col-auto">
           <div className={classNames(styles.dropdown,
