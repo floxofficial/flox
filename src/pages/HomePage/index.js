@@ -17,7 +17,7 @@ class HomePage extends Component {
         title: 'Keystore file', desc: 'Unlock with keystore file', icon: 'icon-file', link: route.keyStorePage,
       },
       {
-        title: 'Ledger', desc: 'Sign and connect with ledger', icon: 'icon-ledger', link: '/',
+        title: 'Ledger', desc: 'Sign and connect with ledger', icon: 'icon-ledger', link: route.dashboardPage,
       },
     ];
 

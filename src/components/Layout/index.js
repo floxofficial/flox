@@ -5,8 +5,8 @@ import Header from './Header';
 import Footer from './Footer';
 import styles from './styles.less';
 
-const Layout = ({ children }) => (
-  <div className={classNames('container-fluid', styles.layout)} id="container">
+const Layout = ({ children, isLoggedIn }) => (
+  <div className={classNames('container-fluid', styles.layout, isLoggedIn && styles.dashboard)} id="container">
     <div id="header">
       <Header />
     </div>
@@ -19,8 +19,12 @@ const Layout = ({ children }) => (
   </div>
 );
 
-Layout.propTypes = {
+Layout.defaultProps = {
+  isLoggedIn: false,
+};
 
+Layout.propTypes = {
+  isLoggedIn: PropTypes.bool,
 };
 
 export default Layout;
