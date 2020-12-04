@@ -1,0 +1,57 @@
+@import '~Root/styles/var';
+
+.checkbox {
+  position: relative;
+}
+
+.checkbox label {
+  padding-left: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: @Waterloo;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + .box:before,
+input[type="checkbox"] + .box:after {
+  transition: all 0.3s;
+}
+input[type="checkbox"] + .box:after {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  margin-top: -5px;
+  margin-left: -4px;
+  display: inline-block;
+  content: ' ';
+  width: 20px;
+  height: 20px;
+  border: 1px solid @Mercury;
+  border-radius: 4px;
+  background-color: white;
+  z-index: 1000;
+}
+input[type="checkbox"]:checked + .box:after {
+  background-color: @PersianBlue;
+  border-color: @PersianBlue;
+}
+input[type="checkbox"]:checked + .box:before {
+  transform: rotate(45deg);
+  position: absolute;
+  left: 7px;
+  top: 0px;
+  width: 6px;
+  height: 13px;
+  border-width: 2px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  border-color: white;
+  content: '';
+  z-index: 10000;
+}
