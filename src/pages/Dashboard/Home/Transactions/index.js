@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Table from 'Root/components/Table';
+import Button from '../../../../components/Button';
 
 const head = ['Txid', 'Amount', 'Time', 'Type', 'Status'];
 
@@ -22,6 +23,13 @@ class Transactions extends Component {
         <Table
           tableRows={rows}
           tableHead={head}
+        />
+        <Button
+          content="View All Transactions"
+          variant="outline"
+          fontSize={14}
+          fontWeight={500}
+          size="100%"
         />
       </div>
     );
