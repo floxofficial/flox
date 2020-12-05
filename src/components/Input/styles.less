@@ -7,6 +7,12 @@
   margin-bottom: 0;
 }
 
+.label-optional {
+  font-size: 14px;
+  font-weight: normal;
+  color: @SpunPearl;
+}
+
 .input {
   width: 100%;
   border: none;
@@ -63,4 +69,16 @@
 
 :local(.icon):focus {
   outline: none;
+}
+
+:local(.group)[aria-disabled="true"] {
+  background-color: @Alabaster;
+  border: 1px solid @Mercury;
+  cursor: not-allowed;
+
+  .input:disabled {
+    background-color: @Alabaster;
+    border: none;
+    cursor: not-allowed;
+  }
 }

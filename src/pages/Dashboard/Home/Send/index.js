@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
-import { Form as FormCheck } from 'react-bootstrap';
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import SelectOption from 'Root/components/SelectOption';
+import Checkbox from 'Root/components/Checkbox';
 import styles from './styles.less';
-import Checkbox from '../../../../components/Checkbox';
 
 class Send extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      checked: true,
+      checked: false,
     };
     this.onChange = this.onChange.bind(this);
   }
 
   onChange() {
     this.setState({ checked: !this.state.checked });
-    console.warn(this.state.checked);
   }
 
   onSubmit(values) {
@@ -96,20 +94,63 @@ class Send extends Component {
                   </div>
                 </div>
 
-               <div className="mt-4">
-                 <Checkbox label="Recommended" />
-               </div>
+                <div className="mt-4">
+                  <Checkbox
+                    label="Recommended"
+                    onChange={this.onChange}
+                    checked={this.state.checked}
+                  />
+                </div>
+
+                <div className="row mt-3">
+                  <div className="col form-group">
+                    <label className="label-primary pt-2">
+                      Gas
+                      <span className="label-optional">
+                        {' '}
+                        (Gdrip)
+                      </span>
+                    </label>
+                    <Field name="gas">
+                      {({ input, meta }) => (
+                        <Input
+                          type="text"
+                          placeholder="1"
+                          input={input}
+                          meta={meta}
+                          disabled={this.state.checked}
+                        />
+                      )}
+                    </Field>
+                  </div>
+                  <div className="col">
+                    <label className="label-primary pt-2">Gas Price</label>
+                    <Field name="price">
+                      {({ input, meta }) => (
+                        <Input
+                          type="text"
+                          placeholder="1"
+                          input={input}
+                          meta={meta}
+                          disabled={this.state.checked}
+                        />
+                      )}
+                    </Field>
+                  </div>
+                </div>
 
                 {submitError && <div className="error">{submitError}</div>}
-                <Button
-                  type="submit"
-                  content="Send"
-                  variant="primary"
-                  size="104px"
-                  fontWeight={500}
-                  className="mt-4 mb-5"
-                  disabled={submitting}
-                />
+                <div style={{ marginBottom: '80px' }}>
+                  <Button
+                    type="submit"
+                    content="Send"
+                    variant="primary"
+                    size="104px"
+                    fontWeight={500}
+                    className="mt-4"
+                    disabled={submitting}
+                  />
+                </div>
               </form>
             )}
           />

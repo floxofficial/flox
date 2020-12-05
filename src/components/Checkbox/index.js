@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.less';
 
-const Checkbox = ({ label }) => {
-  const [checked, setChecked] = useState(false);
-
-  const onChange = (check) => {
-    setChecked(check);
-    // console.warn('isChecked', check);
-  };
-  return (
-    <div className="checkbox" onChange={() => onChange(!checked)}>
-      <label>
-        <input id="check" type="checkbox" defaultChecked={checked} />
-        <span className="box" />
-        {label}
-      </label>
-    </div>
-  );
-};
-
+const Checkbox = ({ label, checked, onChange }) => (
+  <div className={styles.checkbox} onChange={() => onChange(!checked)}>
+    <label>
+      <input id="check" type="checkbox" defaultChecked={checked} className={styles.input} />
+      <span className={styles.box} />
+      {label}
+    </label>
+  </div>
+);
 Checkbox.propTypes = {
   label: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Checkbox;

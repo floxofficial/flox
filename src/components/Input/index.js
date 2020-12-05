@@ -41,8 +41,11 @@ const Input = ({
   const isError = meta && (meta.error || meta.submitError) && meta.touched;
 
   return (
-    <div>
-      <div className={classNames(styles.group, isError && styles.inputError)}>
+    <>
+      <div
+        className={classNames(styles.group, isError && styles.inputError)}
+        aria-disabled={disabled}
+      >
         <input
           type={visibleType}
           className="input"
@@ -57,7 +60,7 @@ const Input = ({
         {generateBtn()}
       </div>
       {isError && (<p className="error">{meta.error || meta.submitError}</p>)}
-    </div>
+    </>
   );
 };
 
