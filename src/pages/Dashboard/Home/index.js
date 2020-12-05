@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
-import styles from './styles.less';
 import Send from './Send';
+import Transactions from './Transactions';
+import styles from './styles.less';
 
 class Dashboard extends Component {
   render() {
@@ -10,14 +11,16 @@ class Dashboard extends Component {
         <div className="col-7">
           <div className="content-card" style={{ padding: '13px 20.5px' }}>
             <div className={styles.tab}>
-              <Tabs defaultActiveKey="send" id="tab">
+              <Tabs defaultActiveKey="transactions" id="tab">
                 <Tab eventKey="send" title="Send">
                   <div style={{ marginTop: '54px' }}>
                     <Send />
                   </div>
                 </Tab>
                 <Tab eventKey="transactions" title="Transactions">
-                  txn
+                  <div style={{ marginTop: '24px' }}>
+                    <Transactions />
+                  </div>
                 </Tab>
                 <Tab eventKey="wallet" title="Wallet info">
                   wallet

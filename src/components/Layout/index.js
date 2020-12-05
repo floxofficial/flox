@@ -14,7 +14,9 @@ const Layout = ({ children, isLoggedIn }) => (
       {children}
     </div>
     <div id="footer">
-      <Footer />
+      {!isLoggedIn
+        && <Footer />
+        }
     </div>
   </div>
 );
