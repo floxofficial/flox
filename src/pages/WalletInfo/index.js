@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { remote } from 'electron';
 import fs from 'fs';
 import Title from 'Root/components/Title';
-import CopyText from 'Root/components/CopyText';
 import Button from 'Root/components/Button';
+import PrivateInfo from 'Root/Block/PrivateInfo';
 import styles from './styles.less';
 
 class WalletInfo extends Component {
@@ -32,16 +32,7 @@ class WalletInfo extends Component {
             Do not lose your private key! There is no way to recover lost keys.
           </p>
           <div className="mt-5">
-            <h6 className={styles.label}>Your address</h6>
-            <p className={styles.info}>
-              {address}
-              <CopyText text={address} icon />
-            </p>
-            <h6 className={styles.label}>Your private key</h6>
-            <p className={styles.info}>
-              {key}
-              <CopyText text={key} icon />
-            </p>
+            <PrivateInfo privateKey={key} address={address} />
           </div>
           <a
             className={styles.download}
