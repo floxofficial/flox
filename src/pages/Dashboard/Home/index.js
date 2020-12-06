@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
-import classNames from "classnames";
+import classNames from 'classnames';
 import PrivateInfo from 'Root/Block/PrivateInfo';
 import Send from './Send';
 import Transactions from './Transactions';
+import Balance from './Balance';
+import Token from './Token';
 import styles from './styles.less';
-import Balance from "./Balance";
+
+const tokens = [
+  { name: 'FCI', value: '2.34' },
+  { name: 'LOO', value: '0.01992' },
+  { name: 'SMO', value: '0.003622' },
+  { name: 'FCI', value: '2.34' },
+  { name: 'LOO', value: '0.01992' },
+  { name: 'SMO', value: '0.003622' },
+];
 
 class Dashboard extends Component {
   render() {
@@ -42,7 +52,7 @@ class Dashboard extends Component {
             <Balance balance={balance} address={address} />
           </div>
           <div className={classNames('content-card', styles['token-card'])}>
-            two
+            <Token tokens={tokens} />
           </div>
         </div>
       </div>
