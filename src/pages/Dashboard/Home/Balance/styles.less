@@ -1,0 +1,61 @@
+@import '~Root/styles/var';
+
+:local(.balance-title) {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  color: @SpunPearl;
+}
+
+:local(.balance-value) {
+  font-size: 34px;
+  font-weight: 500;
+  color: @Shark;
+  margin-top: 6px;
+  margin-bottom: 0;
+  display: flex;
+
+  :local(.currency) {
+    font-size: 14px;
+    font-weight: bold;
+    color: @SpunPearl;
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+}
+
+:local(.address-title) {
+  font-size: 16px;
+  font-weight: 500;
+  color: @Shark;
+  margin-bottom: 0;
+}
+
+:local(.qr) {
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none !important;
+  color: @PersianBlue;
+  cursor: pointer;
+}
+
+:local(.address) {
+  padding: 8px 10px;
+  border-radius: 2px;
+  margin-top: 11px;
+  border: 1px solid @Mercury;
+  width: 100%;
+}
+
+:local(.address-text) {
+  font-size: 16px;
+  line-height: 1.5;
+  color: @Shark!important;
+  word-break: break-all;
+}
+
+.tooltip-qr {
+  .tooltip-inner {
+   padding: 10px 15px;
+  }
+}

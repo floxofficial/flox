@@ -5,11 +5,13 @@ import PrivateInfo from 'Root/Block/PrivateInfo';
 import Send from './Send';
 import Transactions from './Transactions';
 import styles from './styles.less';
+import Balance from "./Balance";
 
 class Dashboard extends Component {
   render() {
     const address = '0x115fcce25b23b7341c6b4da4ce04c43886f0acd2';
     const key = '0x4b8276fc8003a89fe2a0ad9de26ca82c2e26cb3339877b487662bd7219797a9e';
+    const balance = '0.22345';
     return (
       <div className="row mt-3 pt-2">
         <div className="col-7">
@@ -35,7 +37,14 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-        <div className="col-5" />
+        <div className="col-5 flex-column">
+          <div className={classNames('content-card', styles['balance-card'])}>
+            <Balance balance={balance} address={address} />
+          </div>
+          <div className={classNames('content-card', styles['token-card'])}>
+            two
+          </div>
+        </div>
       </div>
     );
   }

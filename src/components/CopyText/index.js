@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Overlay, Tooltip } from 'react-bootstrap';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -24,7 +24,7 @@ const CopyText = ({ icon, text, content }) => {
         className={styles.copy}
       >
         <CopyToClipboard text={text}>
-          {icon ? <span className="icon-layer" /> : content}
+          {icon ? <span className="icon-layer" style={{ marginLeft: '10px' }} /> : <Fragment>{content}</Fragment>}
         </CopyToClipboard>
       </span>
       <Overlay target={target.current} show={show} placement="top">
