@@ -4,6 +4,7 @@ import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import SelectOption from 'Root/components/SelectOption';
 import Checkbox from 'Root/components/Checkbox';
+import QrCodeModal from 'Root/Block/ModalContent/QrCodeModal';
 import styles from './styles.less';
 
 class Send extends Component {
@@ -12,12 +13,18 @@ class Send extends Component {
 
     this.state = {
       checked: false,
+      showModal: false,
     };
     this.onChange = this.onChange.bind(this);
+    this.onShowModal = this.onShowModal.bind(this);
   }
 
   onChange() {
     this.setState({ checked: !this.state.checked });
+  }
+
+  onShowModal(status) {
+    this.setState({ showModal: status });
   }
 
   onSubmit(values) {
@@ -149,11 +156,13 @@ class Send extends Component {
                     fontWeight={500}
                     className="mt-4"
                     disabled={submitting}
+                    onClick={() => this.onShowModal(true)}
                   />
                 </div>
               </form>
             )}
           />
+          <QrCodeModal show={this.state.showModal} setShow={this.onShowModal} />
         </div>
       </div>
     );
