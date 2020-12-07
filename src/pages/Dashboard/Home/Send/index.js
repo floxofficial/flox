@@ -4,7 +4,7 @@ import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import SelectOption from 'Root/components/SelectOption';
 import Checkbox from 'Root/components/Checkbox';
-import QrCodeModal from 'Root/Block/ModalContent/QrCodeModal';
+import ConfirmModal from 'Root/Block/ModalContent/ConfirmModal';
 import styles from './styles.less';
 
 class Send extends Component {
@@ -162,7 +162,7 @@ class Send extends Component {
               </form>
             )}
           />
-          <QrCodeModal show={this.state.showModal} setShow={this.onShowModal} />
+          <ConfirmModal show={this.state.showModal} setShow={this.onShowModal} />
         </div>
       </div>
     );

@@ -1,13 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import QR from 'qrcode.react';
-import { Overlay, Tooltip } from 'react-bootstrap';
+import classNames from 'classnames';
 import CopyText from 'Root/components/CopyText';
+import QrCodeModal from 'Root/Block/ModalContent/QrCodeModal';
 import styles from './styles.less';
 
 const Balance = ({ balance, address }) => {
-  const [show, setShow] = useState(false);
-  const target = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const onShowModal = (status) => {
+    setShowModal(status);
+  };
+
   return (
     <>
       <p className={styles['balance-title']}>Total balance</p>
@@ -20,24 +23,14 @@ const Balance = ({ balance, address }) => {
         <div className="col-auto">
           <a
             className={styles.qr}
-            ref={target}
-            onClick={() => setShow(!show)}
+            onClick={() => setShowModal(true)}
           >
             QR-code
           </a>
-          <Overlay target={target.current} show={show} placement="top">
-            {props => (
-              <Tooltip id="qr" {...props} className="tooltip-qr">
-                <QR
-                  value={address}
-                  size={123}
-                />
-              </Tooltip>
-            )}
-          </Overlay>
+          <QrCodeModal show={showModal} setShow={onShowModal} address={address} />
         </div>
       </div>
-      <div className={styles.address}>
+      <div className={classNames(styles.address, styles.box)}>
         <CopyText
           text={address}
           content={<span className={styles['address-text']}>{address}</span>}
