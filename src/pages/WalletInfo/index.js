@@ -26,7 +26,7 @@ class WalletInfo extends Component {
 
     return (
       <div className="row justify-content-around">
-        <div className="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-11 px-4">
+        <div className="col-xl-8 col-lg-6 col-md-8 col-sm-10 col-11 px-4">
           <Title text="Your wallet info" mt={48} />
           <p className={styles.message}>
             Do not lose your private key! There is no way to recover lost keys.

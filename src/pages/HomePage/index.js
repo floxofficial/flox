@@ -24,7 +24,7 @@ class HomePage extends Component {
     return (
       <>
         <div className="row justify-content-center">
-          <div className="col-xl-4 col-lg-6 col-md-8 col-sm-10 col-11">
+          <div className="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-11">
             <h1 className={styles.title}>How would you like to access your wallet?</h1>
             <div className={styles.buttons}>
               {buttons.map((button, index) => (

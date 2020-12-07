@@ -32,7 +32,7 @@ class KeyStore extends Component {
   render() {
     return (
       <div className="row justify-content-center">
-        <div className="col-xl-4 col-lg-6 col-md-8 col-sm-10 col-11">
+        <div className="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-11">
           <Title text="Unlock with keystore file" mt={48} link="/" />
           <div className={styles.upload}>
             <FileUpload setFile={this.onSetFile} />

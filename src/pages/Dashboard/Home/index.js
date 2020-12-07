@@ -24,7 +24,7 @@ class Dashboard extends Component {
     const balance = '0.22345';
     return (
       <div className="row mt-3 pt-2">
-        <div className="col-7">
+        <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
           <div className={classNames('content-card', styles.card)}>
             <div className={styles.tab}>
               <Tabs defaultActiveKey="send" id="tab">
@@ -47,8 +47,8 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-        <div className="col-5 flex-column">
-          <div className={classNames('content-card', styles['balance-card'])}>
+        <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 flex-column pl-md-4 pl-sm-3 pl-3 pt-md-0 pt-sm-2 pt-2">
+          <div className={classNames('content-card mt-md-0 mt-sm-4 mt-4', styles['balance-card'])}>
             <Balance balance={balance} address={address} />
           </div>
           <div className={classNames('content-card', styles['token-card'])}>

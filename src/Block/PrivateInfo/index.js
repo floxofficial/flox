@@ -7,12 +7,12 @@ const PrivateInfo = ({ address, privateKey }) => (
   <>
     <h6 className={styles.label}>Your address</h6>
     <p className={styles.info}>
-      {address}
+      <span>{address}</span>
       <CopyText text={address} icon />
     </p>
     <h6 className={styles.label}>Your private key</h6>
     <p className={styles.info}>
-      {privateKey}
+      <span>{privateKey}</span>
       <CopyText text={privateKey} icon />
     </p>
   </>

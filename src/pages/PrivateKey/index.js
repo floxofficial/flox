@@ -18,7 +18,7 @@ class PrivateKey extends Component {
   render() {
     return (
       <div className="row justify-content-center">
-        <div className="col-xl-4 col-lg-6 col-md-8 col-sm-10 col-11">
+        <div className="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-11">
           <Title text="Unlock with private key" mt={48} link="/" />
           <Form
             onSubmit={values => this.onSubmit(values)}

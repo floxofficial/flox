@@ -44,7 +44,7 @@ class Send extends Component {
     ];
     return (
       <div className="row">
-        <div className="col-8">
+        <div className="col-10">
           <Form
             onSubmit={values => this.onSubmit(values)}
             validate={values => this.validateForm(values)}
