@@ -7,7 +7,7 @@ import { homePage } from 'Root/static/routes';
 import logo from 'Root/assets/images/logo.png';
 import styles from './styles.less';
 
-const Header = (props) => {
+const Header = ({ isLoggedIn }) => {
   const items = [
     { value: 'main', label: 'Mainet' },
     { value: 'test', label: 'Testnet' },
@@ -19,7 +19,7 @@ const Header = (props) => {
         <div className="col-auto">
           <Link to={homePage}><img src={logo} alt="Fullet" className={styles.logo} /></Link>
         </div>
-        <div className="col-auto">
+        <div className="col-auto d-flex align-items-center">
           <div className={classNames(styles.dropdown, selected.value === items[0].value
             ? styles.main : styles.test)}
           >
@@ -38,6 +38,9 @@ const Header = (props) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
+          {isLoggedIn
+          && <Link to="/" className={classNames(styles.logout, 'icon-power-button')} />
+          }
         </div>
       </div>
     </div>
@@ -45,7 +48,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default Header;

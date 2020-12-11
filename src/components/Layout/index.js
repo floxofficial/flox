@@ -8,7 +8,7 @@ import styles from './styles.less';
 const Layout = ({ children, isLoggedIn }) => (
   <div className={classNames('container-fluid', styles.layout, isLoggedIn && styles.dashboard)} id="container">
     <div id="header">
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
     </div>
     <div id="body">
       {children}
