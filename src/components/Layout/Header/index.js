@@ -20,8 +20,8 @@ const Header = (props) => {
           <Link to={homePage}><img src={logo} alt="Fullet" className={styles.logo} /></Link>
         </div>
         <div className="col-auto">
-          <div className={classNames(styles.dropdown,
-            selected === items[0] ? styles.main : styles.test)}
+          <div className={classNames(styles.dropdown, selected.value === items[0].value
+            ? styles.main : styles.test)}
           >
             <Dropdown>
               <Dropdown.Toggle id="dropdown-basic">
