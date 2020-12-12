@@ -113,14 +113,18 @@ class Send extends Component {
                   variant="base"
                   onClick={() => this.onShowAdvance()}
                   content={(
-                    <span>
-                      Advance
-                      <span className={classNames('icon-caret-down', styles.icon)} />
-                    </span>
-)}
+                    <>
+                      <span>Advance</span>
+                      <span
+                        className={classNames('icon-caret-down',
+                          styles.icon,
+                          this.state.showAdvance && styles.rotate)}
+                      />
+                    </>
+                  )}
                   fontSize={14}
                   fontWeight={500}
-                  size="auto"
+                  size="90px"
                   className="mt-4 h-100"
                 />
                 <Collapse in={this.state.showAdvance}>
