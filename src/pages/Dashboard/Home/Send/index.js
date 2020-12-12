@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
+import { Collapse } from 'react-bootstrap';
+import classNames from 'classnames';
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import SelectOption from 'Root/components/SelectOption';
@@ -14,9 +16,11 @@ class Send extends Component {
     this.state = {
       checked: false,
       showModal: false,
+      showAdvance: false,
     };
     this.onChange = this.onChange.bind(this);
     this.onShowModal = this.onShowModal.bind(this);
+    this.onShowAdvance = this.onShowAdvance.bind(this);
   }
 
   onChange() {
@@ -25,6 +29,10 @@ class Send extends Component {
 
   onShowModal(status) {
     this.setState({ showModal: status });
+  }
+
+  onShowAdvance() {
+    this.setState({ showAdvance: !this.state.showAdvance });
   }
 
   onSubmit(values) {
@@ -101,60 +109,78 @@ class Send extends Component {
                   </div>
                 </div>
 
-                <div className="mt-4">
-                  <Checkbox
-                    label="Recommended"
-                    onChange={this.onChange}
-                    checked={this.state.checked}
-                  />
-                </div>
+                <Button
+                  variant="base"
+                  onClick={() => this.onShowAdvance()}
+                  content={(
+                    <span>
+                      Advance
+                      <span className={classNames('icon-caret-down', styles.icon)} />
+                    </span>
+)}
+                  fontSize={14}
+                  fontWeight={500}
+                  size="auto"
+                  className="mt-4 h-100"
+                />
+                <Collapse in={this.state.showAdvance}>
+                  <div id="collapse-content">
+                    <div className="mt-4">
+                      <Checkbox
+                        label="Recommended"
+                        onChange={this.onChange}
+                        checked={this.state.checked}
+                      />
+                    </div>
 
-                <div className="row mt-3">
-                  <div className="col form-group">
-                    <label className="label-primary pt-2">
-                      Gas
-                      <span className="label-optional">
-                        {' '}
-                        (Gdrip)
-                      </span>
-                    </label>
-                    <Field name="gas">
-                      {({ input, meta }) => (
-                        <Input
-                          type="text"
-                          placeholder="1"
-                          input={input}
-                          meta={meta}
-                          disabled={this.state.checked}
-                        />
-                      )}
-                    </Field>
+                    <div className="row mt-3">
+                      <div className="col form-group mb-0">
+                        <label className="label-primary pt-2">
+                          Gas
+                          <span className="label-optional">
+                            {' '}
+                            (Gdrip)
+                          </span>
+                        </label>
+                        <Field name="gas">
+                          {({ input, meta }) => (
+                            <Input
+                              type="text"
+                              placeholder="1"
+                              input={input}
+                              meta={meta}
+                              disabled={this.state.checked}
+                            />
+                          )}
+                        </Field>
+                      </div>
+                      <div className="col form-group mb-0">
+                        <label className="label-primary pt-2">Gas Price</label>
+                        <Field name="price">
+                          {({ input, meta }) => (
+                            <Input
+                              type="text"
+                              placeholder="1"
+                              input={input}
+                              meta={meta}
+                              disabled={this.state.checked}
+                            />
+                          )}
+                        </Field>
+                      </div>
+                    </div>
                   </div>
-                  <div className="col">
-                    <label className="label-primary pt-2">Gas Price</label>
-                    <Field name="price">
-                      {({ input, meta }) => (
-                        <Input
-                          type="text"
-                          placeholder="1"
-                          input={input}
-                          meta={meta}
-                          disabled={this.state.checked}
-                        />
-                      )}
-                    </Field>
-                  </div>
-                </div>
+                </Collapse>
 
                 {submitError && <div className="error">{submitError}</div>}
-                <div style={{ marginBottom: '80px' }}>
+                <div>
                   <Button
                     type="submit"
                     content="Send"
                     variant="primary"
                     size="104px"
                     fontWeight={500}
-                    className="mt-4"
+                    className="mt-4-5"
                     disabled={submitting}
                     onClick={() => this.onShowModal(true)}
                   />
