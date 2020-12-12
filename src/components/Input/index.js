@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './styles.less';
 
 const Input = ({
-  type, defaultValue, variant, size, height, fontSize, disabled, placeholder, name, input, meta, autoFocus,
+  type, defaultValue, variant, size, height, fontSize, disabled, placeholder, name, input, meta, autoFocus, setMax,
 }) => {
   const [visibleType, setVisibleType] = useState(type);
   const toggleVisible = () => {
@@ -22,6 +23,9 @@ const Input = ({
     }
   }, []);
 
+  const renderTooltip = props => <Tooltip id="max-tooltip" {...props}>Send entire</Tooltip>;
+
+
   const generateBtn = () => {
     if (variant === 'pass') {
       return (
@@ -32,6 +36,25 @@ const Input = ({
         >
           <span className={visibleType === 'text' ? 'icon-eye' : 'icon-eye'} />
         </button>
+      );
+    }
+
+    if (variant === 'max') {
+      return (
+        <OverlayTrigger
+          placement="top"
+          overlay={renderTooltip}
+        >
+          <button
+            type="button"
+            className={classNames(styles.icon)}
+          >
+            <span
+              className={classNames('icon-double-arrow-up', styles.icon)}
+              onClick={() => { setMax(); }}
+            />
+          </button>
+        </OverlayTrigger>
       );
     }
 
@@ -74,6 +97,7 @@ Input.defaultProps = {
   size: '100%',
   fontSize: 16,
   height: 44,
+  setMax: () => {},
 };
 
 Input.propTypes = {
@@ -87,6 +111,7 @@ Input.propTypes = {
   size: PropTypes.string,
   fontSize: PropTypes.number,
   height: PropTypes.number,
+  setMax: PropTypes.func,
 };
 
 export default Input;

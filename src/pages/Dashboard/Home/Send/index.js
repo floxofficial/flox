@@ -81,6 +81,8 @@ class Send extends Component {
                         {({ input, meta }) => (
                           <Input
                             type="text"
+                            variant="max"
+                            setMax={() => {}}
                             placeholder="1"
                             input={input}
                             meta={meta}
