@@ -15,6 +15,7 @@ const tokens = [
   { name: 'FCI', value: '2.34' },
   { name: 'LOO', value: '0.01992' },
   { name: 'SMO', value: '0.003622' },
+  { name: 'SMO', value: '0.003622' },
 ];
 
 class Dashboard extends Component {

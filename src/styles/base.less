@@ -69,3 +69,33 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 15px;
+  background-color: white;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+.scroll:hover::-webkit-scrollbar {
+  width: 6px;
+  background-color: white;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  transition: ease-in 0.3s;
+}
+
+.scroll:hover::-webkit-scrollbar-thumb {
+  border-radius: 13px;
+  background-color: @PersianBlue;
+  transition: ease-in 0.3s;
+}
+
+.hidden-scroll::-webkit-scrollbar-track,
+.hidden-scroll::-webkit-scrollbar {
+  width: 0;
+}
