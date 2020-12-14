@@ -17,10 +17,12 @@ class Send extends Component {
       checked: false,
       showModal: false,
       showAdvance: false,
+      selectedValue: '',
     };
     this.onChange = this.onChange.bind(this);
     this.onShowModal = this.onShowModal.bind(this);
     this.onShowAdvance = this.onShowAdvance.bind(this);
+    this.onSetSelectedValue = this.onSetSelectedValue.bind(this);
   }
 
   onChange() {
@@ -33,6 +35,11 @@ class Send extends Component {
 
   onShowAdvance() {
     this.setState({ showAdvance: !this.state.showAdvance });
+  }
+
+  onSetSelectedValue(value) {
+    this.setState({ selectedValue: value });
+    // console.warn(value);
   }
 
   onSubmit(values) {
@@ -90,13 +97,15 @@ class Send extends Component {
                         )}
                       </Field>
                     </div>
-                    <div className="col-auto pl-3">
+                    <div className="col-auto pl-3" style={{ paddingTop: '6.5px' }}>
                       <SelectOption
                         items={items}
-                        height="44px"
+                        height="45px"
                         width="100px"
                         fontSize={16}
                         className={styles.drop}
+                        searchable
+                        setValue={this.onSetSelectedValue}
                       />
                     </div>
                   </div>
