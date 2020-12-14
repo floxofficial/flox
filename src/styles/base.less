@@ -53,10 +53,19 @@ a:focus {
   border: 5px solid white;
   transform-origin: 0 0;
   transform: rotate(-45deg);
-  //box-shadow: 2px 2px 4px 0px rgba(161, 161, 161, 1);
   box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.6);
 }
 
 .mt-4-5 {
-  margin-top: 32px!important;
+  margin-top: 32px !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

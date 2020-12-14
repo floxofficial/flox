@@ -80,7 +80,7 @@ class Send extends Component {
                       <Field name="amount">
                         {({ input, meta }) => (
                           <Input
-                            type="text"
+                            type="number"
                             variant="max"
                             setMax={() => {}}
                             placeholder="1"
