@@ -160,7 +160,7 @@ class Send extends Component {
                         <Field name="gas">
                           {({ input, meta }) => (
                             <Input
-                              type="text"
+                              type="number"
                               placeholder="1"
                               input={input}
                               meta={meta}
@@ -174,7 +174,7 @@ class Send extends Component {
                         <Field name="price">
                           {({ input, meta }) => (
                             <Input
-                              type="text"
+                              type="number"
                               placeholder="1"
                               input={input}
                               meta={meta}
