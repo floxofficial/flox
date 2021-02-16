@@ -14,16 +14,16 @@
   cursor: pointer;
 }
 
-:local(.input)[type="checkbox"] {
+:local(.input)[type='checkbox'] {
   display: none;
 }
 
-:local(.input)[type="checkbox"] + :local(.box):before,
-:local(.input)[type="checkbox"] + :local(.box):after {
+:local(.input)[type='checkbox'] + :local(.box):before,
+:local(.input)[type='checkbox'] + :local(.box):after {
   transition: all 0.3s;
 }
 
-:local(.input)[type="checkbox"] + :local(.box):after {
+:local(.input)[type='checkbox'] + :local(.box):after {
   position: absolute;
   left: 4px;
   top: 4px;
@@ -39,12 +39,12 @@
   z-index: 1000;
 }
 
-:local(.input)[type="checkbox"]:checked + :local(.box):after {
+:local(.input)[type='checkbox']:checked + :local(.box):after {
   background-color: @PersianBlue;
   border-color: @PersianBlue;
 }
 
-:local(.input)[type="checkbox"]:checked + :local(.box):before {
+:local(.input)[type='checkbox']:checked + :local(.box):before {
   transform: rotate(45deg);
   position: absolute;
   left: 7px;

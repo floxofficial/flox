@@ -26,7 +26,9 @@ const ConfirmModal = ({ show, setShow }) => {
             </div>
             <div className="col flex-column pl-2">
               <div className={styles.label}>From</div>
-              <div className={styles.value}>0x115fcce25b23b7341c6b4da4ce04c43886f0acd2</div>
+              <div className={styles.value}>
+                0x115fcce25b23b7341c6b4da4ce04c43886f0acd2
+              </div>
             </div>
           </div>
 
@@ -40,17 +42,37 @@ const ConfirmModal = ({ show, setShow }) => {
             </div>
             <div className="col flex-column pl-2">
               <div className={styles.label}>To</div>
-              <div className={styles.value}>0x115fcce25b23b7341c6b4da4ce04c43886f0acd2</div>
+              <div className={styles.value}>
+                0x115fcce25b23b7341c6b4da4ce04c43886f0acd2
+              </div>
             </div>
           </div>
 
-          <div className={classNames('row justify-content-between align-items-center pt-3', styles['txn-box'])}>
-            <div className="col-auto"><h6 className={styles['amount-label']}>Amount</h6></div>
-            <div className="col-auto"><p className={styles.amount}>280 CFX  /   $11</p></div>
+          <div
+            className={classNames(
+              'row justify-content-between align-items-center pt-3',
+              styles['txn-box'],
+            )}
+          >
+            <div className="col-auto">
+              <h6 className={styles['amount-label']}>Amount</h6>
+            </div>
+            <div className="col-auto">
+              <p className={styles.amount}>280 CFX / $11</p>
+            </div>
           </div>
-          <div className={classNames('row justify-content-between align-items-center', styles['txn-box'])}>
-            <div className="col-auto"><h6 className={styles['amount-label']}>Transaction fee</h6></div>
-            <div className="col-auto"><p className={styles.amount}>280 CFX  /   $11</p></div>
+          <div
+            className={classNames(
+              'row justify-content-between align-items-center',
+              styles['txn-box'],
+            )}
+          >
+            <div className="col-auto">
+              <h6 className={styles['amount-label']}>Transaction fee</h6>
+            </div>
+            <div className="col-auto">
+              <p className={styles.amount}>280 CFX / $11</p>
+            </div>
           </div>
 
           <div className={classNames('d-flex justify-content-end', styles['button-box'])}>
@@ -75,11 +97,7 @@ const ConfirmModal = ({ show, setShow }) => {
         </div>
       </ModalDialog>
 
-      <StatusModal
-        show={showStatusModal}
-        setShow={onShowStatusModal}
-        address={address}
-      />
+      <StatusModal show={showStatusModal} setShow={onShowStatusModal} address={address} />
     </>
   );
 };

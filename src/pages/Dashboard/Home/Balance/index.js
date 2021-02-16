@@ -19,22 +19,18 @@ const Balance = ({ balance, address }) => {
         <span className={styles.currency}> CFX</span>
       </h6>
       <div className="row justify-content-between mt-3 pt-2 align-items-center">
-        <div className="col-auto"><h6 className={styles['address-title']}>Your Address</h6></div>
         <div className="col-auto">
-          <a
-            className={styles.qr}
-            onClick={() => setShowModal(true)}
-          >
+          <h6 className={styles['address-title']}>Your Address</h6>
+        </div>
+        <div className="col-auto">
+          <a className={styles.qr} onClick={() => setShowModal(true)}>
             QR-code
           </a>
           <QrCodeModal show={showModal} setShow={onShowModal} address={address} />
         </div>
       </div>
       <div className={classNames(styles.address, styles.box)}>
-        <CopyText
-          text={address}
-          content={<span className={styles['address-text']}>{address}</span>}
-        />
+        <CopyText text={address} content={<span className={styles['address-text']}>{address}</span>} />
       </div>
     </>
   );

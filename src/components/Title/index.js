@@ -6,7 +6,11 @@ import styles from './styles.less';
 const Title = ({ text, mt, link }) => (
   <div style={{ marginTop: `${mt}px` }}>
     <h1 className={styles.title}>
-      {link && <Link to={link}><span className="icon-arrow-left" /></Link>}
+      {link && (
+        <Link to={link}>
+          <span className="icon-arrow-left" />
+        </Link>
+      )}
       {text}
     </h1>
   </div>

@@ -9,13 +9,8 @@ const ModalDialog = ({ children, show, setShow }) => {
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <button
-        className={classNames('icon-multiply', styles.close)}
-        onClick={handleClose}
-      />
-      <Modal.Body>
-        {children}
-      </Modal.Body>
+      <button className={classNames('icon-multiply', styles.close)} onClick={handleClose} />
+      <Modal.Body>{children}</Modal.Body>
     </Modal>
   );
 };

@@ -4,7 +4,16 @@ import classNames from 'classnames';
 import styles from './styles.less';
 
 const Button = ({
-  disabled, content, variant, size, fontSize, type, onClick, className, fontWeight, children,
+  disabled,
+  content,
+  variant,
+  size,
+  fontSize,
+  type,
+  onClick,
+  className,
+  fontWeight,
+  children,
 }) => (
   <button
     type={type}

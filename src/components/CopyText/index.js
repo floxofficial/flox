@@ -18,8 +18,13 @@ const CopyText = ({ icon, text, content }) => {
     <>
       <span
         ref={target}
-        onMouseEnter={() => { setShow(true); }}
-        onMouseLeave={() => { setShow(false); setText('Copy to clipboard'); }}
+        onMouseEnter={() => {
+          setShow(true);
+        }}
+        onMouseLeave={() => {
+          setShow(false);
+          setText('Copy to clipboard');
+        }}
         onClick={() => toggle()}
         className={styles.copy}
       >
@@ -28,7 +33,7 @@ const CopyText = ({ icon, text, content }) => {
         </CopyToClipboard>
       </span>
       <Overlay target={target.current} show={show} placement="top">
-        {props => (
+        {(props) => (
           <Tooltip id="overlay-example" {...props} className="tooltip-copy">
             {tooltipText}
           </Tooltip>

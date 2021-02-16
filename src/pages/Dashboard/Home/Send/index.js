@@ -61,11 +61,9 @@ class Send extends Component {
       <div className="row">
         <div className="col-10">
           <Form
-            onSubmit={values => this.onSubmit(values)}
-            validate={values => this.validateForm(values)}
-            render={({
-              submitError, handleSubmit, submitting,
-            }) => (
+            onSubmit={(values) => this.onSubmit(values)}
+            validate={(values) => this.validateForm(values)}
+            render={({ submitError, handleSubmit, submitting }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="label-primary">To Address</label>
@@ -111,7 +109,9 @@ class Send extends Component {
                   </div>
                 </div>
                 <div className="row align-items-center justify-content-between mt-2">
-                  <div className="col-auto"><h6 className={styles.fee}>Transaction fee</h6></div>
+                  <div className="col-auto">
+                    <h6 className={styles.fee}>Transaction fee</h6>
+                  </div>
                   <div className="col-auto">
                     <p className={styles['fee-value']}>
                       0.00845
@@ -123,16 +123,18 @@ class Send extends Component {
                 <Button
                   variant="base"
                   onClick={() => this.onShowAdvance()}
-                  content={(
+                  content={
                     <>
                       <span>Advance</span>
                       <span
-                        className={classNames('icon-caret-down',
+                        className={classNames(
+                          'icon-caret-down',
                           styles.icon,
-                          this.state.showAdvance && styles.rotate)}
+                          this.state.showAdvance && styles.rotate,
+                        )}
                       />
                     </>
-                  )}
+                  }
                   fontSize={14}
                   fontWeight={500}
                   size="90px"
@@ -141,21 +143,14 @@ class Send extends Component {
                 <Collapse in={this.state.showAdvance}>
                   <div id="collapse-content">
                     <div className="mt-4">
-                      <Checkbox
-                        label="Recommended"
-                        onChange={this.onChange}
-                        checked={this.state.checked}
-                      />
+                      <Checkbox label="Recommended" onChange={this.onChange} checked={this.state.checked} />
                     </div>
 
                     <div className="row mt-3">
                       <div className="col form-group mb-0">
                         <label className="label-primary pt-2">
                           Gas
-                          <span className="label-optional">
-                            {' '}
-                            (Gdrip)
-                          </span>
+                          <span className="label-optional"> (Gdrip)</span>
                         </label>
                         <Field name="gas">
                           {({ input, meta }) => (

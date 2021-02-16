@@ -37,40 +37,38 @@ class KeyStore extends Component {
           <div className={styles.upload}>
             <FileUpload setFile={this.onSetFile} />
             {this.state.file && this.state.file.name && (
-            <>
-              <Form
-                onSubmit={values => this.onSubmit(values)}
-                validate={values => this.validateForm(values)}
-                render={({
-                  submitError, handleSubmit, submitting,
-                }) => (
-                  <form className={styles.form} onSubmit={handleSubmit}>
-                    <label className="label-primary">Password</label>
-                    <Field name="password">
-                      {({ input, meta }) => (
-                        <Input
-                          type="password"
-                          placeholder="Enter your password here"
-                          variant="pass"
-                          input={input}
-                          meta={meta}
-                        />
-                      )}
-                    </Field>
-                    {submitError && <div className="error">{submitError}</div>}
-                    <Button
-                      type="submit"
-                      content="Unlock wallet"
-                      variant="primary"
-                      size="100%"
-                      fontWeight={500}
-                      className="mt-4"
-                      disabled={submitting}
-                    />
-                  </form>
-                )}
-              />
-            </>
+              <>
+                <Form
+                  onSubmit={(values) => this.onSubmit(values)}
+                  validate={(values) => this.validateForm(values)}
+                  render={({ submitError, handleSubmit, submitting }) => (
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                      <label className="label-primary">Password</label>
+                      <Field name="password">
+                        {({ input, meta }) => (
+                          <Input
+                            type="password"
+                            placeholder="Enter your password here"
+                            variant="pass"
+                            input={input}
+                            meta={meta}
+                          />
+                        )}
+                      </Field>
+                      {submitError && <div className="error">{submitError}</div>}
+                      <Button
+                        type="submit"
+                        content="Unlock wallet"
+                        variant="primary"
+                        size="100%"
+                        fontWeight={500}
+                        className="mt-4"
+                        disabled={submitting}
+                      />
+                    </form>
+                  )}
+                />
+              </>
             )}
           </div>
         </div>

@@ -21,11 +21,9 @@ class PrivateKey extends Component {
         <div className="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-11">
           <Title text="Unlock with private key" mt={48} link="/" />
           <Form
-            onSubmit={values => this.onSubmit(values)}
-            validate={values => this.validateForm(values)}
-            render={({
-              submitError, handleSubmit, submitting, invalid,
-            }) => (
+            onSubmit={(values) => this.onSubmit(values)}
+            validate={(values) => this.validateForm(values)}
+            render={({ submitError, handleSubmit, submitting }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <label className="label-primary">Private key</label>
                 <Field name="password">

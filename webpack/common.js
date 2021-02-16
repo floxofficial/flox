@@ -19,10 +19,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           cacheDirectory: true,
-          presets: [
-            '@babel/preset-env',
-            '@babel/preset-react',
-          ],
+          presets: ['@babel/preset-env', '@babel/preset-react'],
           plugins: [
             ['@babel/transform-runtime'],
             'transform-async-to-generator',
@@ -45,9 +42,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg|otf)$/,
-        use: [
-          'url-loader',
-        ],
+        use: ['url-loader'],
       },
     ],
   },
@@ -66,8 +61,7 @@ module.exports = {
   target: 'node',
   externals: [
     nodeExternals({
-      whitelist: [
-      ],
+      whitelist: [],
     }),
   ],
   node: {

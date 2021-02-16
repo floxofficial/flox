@@ -5,7 +5,19 @@ import classNames from 'classnames';
 import styles from './styles.less';
 
 const Input = ({
-  type, defaultValue, variant, size, height, fontSize, disabled, placeholder, name, input, meta, autoFocus, setMax,
+  type,
+  defaultValue,
+  variant,
+  size,
+  height,
+  fontSize,
+  disabled,
+  placeholder,
+  name,
+  input,
+  meta,
+  autoFocus,
+  setMax,
 }) => {
   const [visibleType, setVisibleType] = useState(type);
   const toggleVisible = () => {
@@ -23,17 +35,16 @@ const Input = ({
     }
   }, []);
 
-  const renderTooltip = props => <Tooltip id="max-tooltip" {...props}>Send entire</Tooltip>;
-
+  const renderTooltip = (props) => (
+    <Tooltip id="max-tooltip" {...props}>
+      Send entire
+    </Tooltip>
+  );
 
   const generateBtn = () => {
     if (variant === 'pass') {
       return (
-        <button
-          type="button"
-          className={styles.icon}
-          onClick={toggleVisible}
-        >
+        <button type="button" className={styles.icon} onClick={toggleVisible}>
           <span className={visibleType === 'text' ? 'icon-eye' : 'icon-eye'} />
         </button>
       );
@@ -41,17 +52,13 @@ const Input = ({
 
     if (variant === 'max') {
       return (
-        <OverlayTrigger
-          placement="top"
-          overlay={renderTooltip}
-        >
-          <button
-            type="button"
-            className={classNames(styles.icon)}
-          >
+        <OverlayTrigger placement="top" overlay={renderTooltip}>
+          <button type="button" className={classNames(styles.icon)}>
             <span
               className={classNames('icon-double-arrow-up', styles.icon)}
-              onClick={() => { setMax(); }}
+              onClick={() => {
+                setMax();
+              }}
             />
           </button>
         </OverlayTrigger>
@@ -65,10 +72,7 @@ const Input = ({
 
   return (
     <>
-      <div
-        className={classNames(styles.group, isError && styles.inputError)}
-        aria-disabled={disabled}
-      >
+      <div className={classNames(styles.group, isError && styles.inputError)} aria-disabled={disabled}>
         <input
           type={visibleType}
           className="input"
@@ -82,7 +86,7 @@ const Input = ({
         />
         {generateBtn()}
       </div>
-      {isError && (<p className="error">{meta.error || meta.submitError}</p>)}
+      {isError && <p className="error">{meta.error || meta.submitError}</p>}
     </>
   );
 };

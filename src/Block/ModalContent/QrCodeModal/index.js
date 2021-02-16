@@ -12,12 +12,7 @@ const QrCodeModal = ({ show, setShow, address }) => (
       <div className={classNames(styles.box, styles['qr-box'])}>
         <div className="row align-items-center">
           <div className="col-auto">
-            <QR
-              value={address}
-              size={153}
-              bgColor="#fff"
-              fgColor="#1d45db"
-            />
+            <QR value={address} size={153} bgColor="#fff" fgColor="#1d45db" />
           </div>
           <div className="col text-center">
             <h1 className={styles.scan}>SCAN ME</h1>
@@ -26,7 +21,9 @@ const QrCodeModal = ({ show, setShow, address }) => (
       </div>
       <CopyText
         text={address}
-        content={<span className={classNames(styles.box, styles['address-box'])}>{address}</span>}
+        content={
+          <span className={classNames(styles.box, styles['address-box'])}>{address}</span>
+        }
       />
     </div>
   </ModalDialog>

@@ -17,20 +17,28 @@ const Header = ({ isLoggedIn }) => {
     <div>
       <div className="row justify-content-between align-items-center">
         <div className="col-auto">
-          <Link to={homePage}><img src={logo} alt="Fullet" className={styles.logo} /></Link>
+          <Link to={homePage}>
+            <img src={logo} alt="Fullet" className={styles.logo} />
+          </Link>
         </div>
         <div className="col-auto d-flex align-items-center">
-          <div className={classNames(styles.dropdown, selected.value === items[0].value
-            ? styles.main : styles.test)}
+          <div
+            className={classNames(
+              styles.dropdown,
+              selected.value === items[0].value ? styles.main : styles.test,
+            )}
           >
             <Dropdown>
-              <Dropdown.Toggle id="dropdown-basic">
-                {selected.label}
-              </Dropdown.Toggle>
+              <Dropdown.Toggle id="dropdown-basic">{selected.label}</Dropdown.Toggle>
               <Dropdown.Menu>
-                {items.map(item => (
+                {items.map((item) => (
                   <Fragment key={item.value}>
-                    <Dropdown.Item eventKey={item.value} onClick={() => { setSelected(item); }}>
+                    <Dropdown.Item
+                      eventKey={item.value}
+                      onClick={() => {
+                        setSelected(item);
+                      }}
+                    >
                       {item.label}
                     </Dropdown.Item>
                   </Fragment>
@@ -38,9 +46,7 @@ const Header = ({ isLoggedIn }) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-          {isLoggedIn
-          && <Link to="/" className={classNames(styles.logout, 'icon-power-button')} />
-          }
+          {isLoggedIn && <Link to="/" className={classNames(styles.logout, 'icon-power-button')} />}
         </div>
       </div>
     </div>

@@ -5,9 +5,7 @@ import classNames from 'classnames';
 import { Dropdown } from 'react-bootstrap';
 import styles from './styles.less';
 
-const SelectOption = ({
-  items, height, width, fontSize, className, searchable, setValue,
-}) => {
+const SelectOption = ({ items, height, width, fontSize, className, searchable, setValue }) => {
   const [selected, setSelected] = useState(items[0]);
 
   const styleSheet = {
@@ -20,7 +18,6 @@ const SelectOption = ({
     setSelected(e);
     setValue(e);
   };
-
 
   return (
     <div>
@@ -35,7 +32,7 @@ const SelectOption = ({
             hideSelectedOptions={false}
             isSearchable
             backspaceRemovesValue={false}
-            onChange={e => onChangeNetwork(e)}
+            onChange={(e) => onChangeNetwork(e)}
             styles={{
               ...styles,
               control: (base, state) => ({
@@ -60,9 +57,14 @@ const SelectOption = ({
               {selected.label}
             </Dropdown.Toggle>
             <Dropdown.Menu style={styleSheet.div}>
-              {items.map(item => (
+              {items.map((item) => (
                 <Fragment key={item.value}>
-                  <Dropdown.Item eventKey={item.value} onClick={() => { setSelected(item); }}>
+                  <Dropdown.Item
+                    eventKey={item.value}
+                    onClick={() => {
+                      setSelected(item);
+                    }}
+                  >
                     {item.label}
                   </Dropdown.Item>
                 </Fragment>

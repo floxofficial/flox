@@ -7,9 +7,7 @@ import styles from './styles.less';
 
 const FileUpload = ({ setFile }) => {
   const [fileName, setFileName] = useState('');
-  const {
-    getRootProps, getInputProps, open, acceptedFiles,
-  } = useDropzone({
+  const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
     noKeyboard: true,
@@ -21,34 +19,31 @@ const FileUpload = ({ setFile }) => {
     setFile(acceptedFiles[0]);
   }, [acceptedFiles]);
 
-  const files = acceptedFiles.map(file => <div key="image" className={styles.info}>{file.name}</div>);
+  const files = acceptedFiles.map((file) => (
+    <div key="image" className={styles.info}>
+      {file.name}
+    </div>
+  ));
 
   return (
     <div>
       {!fileName ? (
         <div {...getRootProps({ className: 'dropzone' })}>
           <input {...getInputProps()} />
-          <Button
-            onClick={open}
-            variant="primary"
-            fontWeight={500}
-            size="100%"
-          >
+          <Button onClick={open} variant="primary" fontWeight={500} size="100%">
             <span className={classNames('icon-upload', styles.icon)} />
             Select Wallet File
           </Button>
         </div>
-      )
-        : (
-          <>
-            <div>{files}</div>
-            <p className={styles.message}>
-              <span className="icon-correct-circle" />
-              Your Wallet is successfully encrypted
-            </p>
-          </>
-        )
-      }
+      ) : (
+        <>
+          <div>{files}</div>
+          <p className={styles.message}>
+            <span className="icon-correct-circle" />
+            Your Wallet is successfully encrypted
+          </p>
+        </>
+      )}
     </div>
   );
 };

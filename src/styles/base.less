@@ -1,8 +1,10 @@
-@import "font";
-@import "var";
+@import 'font';
+@import 'var';
 @import '~bootstrap/dist/css/bootstrap.css';
 
-html, body, #react {
+html,
+body,
+#react {
   height: 100%;
 }
 
@@ -36,7 +38,7 @@ a:focus {
 }
 
 .bs-tooltip-top .arrow::before,
-.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+.bs-tooltip-auto[x-placement^='top'] .arrow::before {
   border-top-color: white;
   display: none;
 }
@@ -46,7 +48,7 @@ a:focus {
 }
 
 .bs-tooltip-top .arrow::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   z-index: -1;
@@ -66,10 +68,9 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
-
 
 .scroll::-webkit-scrollbar-track {
   border-radius: 15px;

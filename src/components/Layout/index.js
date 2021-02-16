@@ -6,18 +6,15 @@ import Footer from './Footer';
 import styles from './styles.less';
 
 const Layout = ({ children, isLoggedIn }) => (
-  <div className={classNames('container-fluid', styles.layout, isLoggedIn && styles.dashboard)} id="container">
+  <div
+    className={classNames('container-fluid', styles.layout, isLoggedIn && styles.dashboard)}
+    id="container"
+  >
     <div id="header">
       <Header isLoggedIn={isLoggedIn} />
     </div>
-    <div id="body">
-      {children}
-    </div>
-    <div id="footer">
-      {!isLoggedIn
-        && <Footer />
-        }
-    </div>
+    <div id="body">{children}</div>
+    <div id="footer">{!isLoggedIn && <Footer />}</div>
   </div>
 );
 
