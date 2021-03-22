@@ -1,53 +1,74 @@
+import fs from 'fs';
 import React from 'react';
 import { remote } from 'electron';
-import fs from 'fs';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import Title from 'Root/components/Title';
 import Button from 'Root/components/Button';
 import PrivateInfo from 'Root/Block/PrivateInfo';
+import keystoreMaker from 'Root/helpers/keystore';
+import { dashboardPage } from 'Root/static/routes';
+
 import styles from './styles.less';
 
-const WalletInfo = () => {
-  const address = '0x115fcce25b23b7341c6b4da4ce04c43886f0acd2';
-  const key = '0x4b8276fc8003a89fe2a0ad9de26ca82c2e26cb3339877b487662bd7219797a9e';
+const WalletInfo = (props) => {
+  const { wallet, password } = props;
+  const activeAccount = wallet.find((x) => x.active);
+
+  const keystore = keystoreMaker(activeAccount, password);
+
   const { dialog } = remote;
-  const WIN = remote.getCurrentWindow();
+  const currentWindow = remote.getCurrentWindow();
 
   const options = {
-    title: 'Save file',
-    defaultPath: 'C:\\logo.png',
-    buttonLabel: 'Save key File',
-    filters: [
-      { name: 'Images', extensions: ['jpg', 'png', 'gif'] },
-      { name: 'Movies', extensions: ['mkv', 'avi', 'mp4'] },
-      { name: 'Custom File Type', extensions: ['as'] },
-      { name: 'All Files', extensions: ['*'] },
-    ],
+    title: 'Save keystore',
+    buttonLabel: 'Save keystore',
+    filters: [{ name: 'All Files', extensions: ['*'] }],
+  };
+
+  const handleContinue = () => {
+    props.history.push(dashboardPage);
   };
 
   return (
     <div className="row justify-content-around">
       <div className="col-xl-8 col-lg-6 col-md-8 col-sm-10 col-11 px-4">
         <Title text="Your wallet info" mt={48} />
-        <p className={styles.message}>Do not lose your private key! There is no way to recover lost keys.</p>
+        <p className={styles.message}>
+          Do not lose your private key! There is no way to recover lost keys.
+        </p>
         <div className="mt-5">
-          <PrivateInfo privateKey={key} address={address} />
+          <PrivateInfo
+            privateKey={activeAccount.privateKey}
+            address={activeAccount.address}
+          />
         </div>
         <a
           className={styles.download}
           onClick={() => {
-            dialog.showSaveDialog(WIN, options, (filename) => {
-              console.log(filename);
-              fs.writeFileSync(filename, 'hello world', 'utf-8');
+            dialog.showSaveDialog(currentWindow, options, (filename) => {
+              fs.writeFileSync(filename, keystore, 'utf-8');
             });
           }}
         >
           <div className={styles['download-text']}>Download Keystore file</div>
           <div className="icon-upload" />
         </a>
-        <Button variant="primary" content="Continue" size="118px" />
+        <Button
+          variant="primary"
+          content="Continue"
+          size="118px"
+          onClick={handleContinue}
+        />
       </div>
     </div>
   );
 };
 
-export default WalletInfo;
+export default withRouter(
+  connect((store) => ({
+    wallet: store.wallet,
+    password: store.password,
+  }))(WalletInfo),
+);

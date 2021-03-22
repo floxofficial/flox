@@ -1,17 +1,28 @@
-import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Dropdown } from 'react-bootstrap';
 import classNames from 'classnames';
+import { Link, withRouter } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
+import React, { useState, Fragment } from 'react';
+
+import changeNetwork from 'Root/actions/network';
 import { homePage } from 'Root/static/routes';
 import logo from 'Root/assets/images/logo.png';
+import logoutAction from 'Root/actions/wallet/logout';
+
 import styles from './styles.less';
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, ...props }) => {
   const items = [
-    { value: 'main', label: 'Mainet' },
-    { value: 'test', label: 'Testnet' },
+    { value: 'mainnet', label: 'Mainet' },
+    { value: 'testnet', label: 'Testnet' },
   ];
+
+  const handleLogout = () => {
+    logoutAction();
+
+    props.history.push(homePage);
+  };
+
   const [selected, setSelected] = useState(items[0]);
   return (
     <div>
@@ -37,6 +48,7 @@ const Header = ({ isLoggedIn }) => {
                       eventKey={item.value}
                       onClick={() => {
                         setSelected(item);
+                        changeNetwork(item.value);
                       }}
                     >
                       {item.label}
@@ -46,7 +58,12 @@ const Header = ({ isLoggedIn }) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-          {isLoggedIn && <Link to="/" className={classNames(styles.logout, 'icon-power-button')} />}
+          {isLoggedIn && (
+            <Link
+              onClick={handleLogout}
+              className={classNames(styles.logout, 'icon-power-button')}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -57,4 +74,4 @@ Header.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
 };
 
-export default Header;
+export default withRouter(Header);

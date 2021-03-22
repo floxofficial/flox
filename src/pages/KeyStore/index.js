@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
+import { withRouter } from 'react-router-dom';
+
 import Title from 'Root/components/Title';
-import FileUpload from 'Root/components/FileUpload';
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
+import FileUpload from 'Root/components/FileUpload';
+import keystoreAction from 'Root/actions/wallet/keystore';
+import { walletInfoPage } from 'Root/static/routes';
+
 import styles from './styles.less';
 
 class KeyStore extends Component {
@@ -12,24 +17,49 @@ class KeyStore extends Component {
 
     this.state = {
       file: {},
+      hasError: false,
+      content: '',
     };
+
     this.onSetFile = this.onSetFile.bind(this);
   }
 
   onSetFile(file) {
-    this.setState({ file });
+    if (file.hasError) {
+      this.setState({
+        hasError: true,
+      });
+    } else {
+      this.setState({
+        file: file.file,
+        content: file.content,
+      });
+    }
   }
 
   onSubmit(values) {
-    // console.warn(values);
+    const result = keystoreAction({
+      password: values.password,
+      content: this.state.content,
+    });
+
+    if (result) {
+      return this.props.history.push(walletInfoPage);
+    }
+
+    return {
+      password: 'Wrong password',
+    };
   }
 
-  validateForm(values) {
+  validateForm() {
     const errors = {};
     return errors;
   }
 
   render() {
+    const { hasError } = this.state;
+
     return (
       <div className="row justify-content-center">
         <div className="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-11">
@@ -41,7 +71,7 @@ class KeyStore extends Component {
                 <Form
                   onSubmit={(values) => this.onSubmit(values)}
                   validate={(values) => this.validateForm(values)}
-                  render={({ submitError, handleSubmit, submitting }) => (
+                  render={({ submitError, handleSubmit, pristine }) => (
                     <form className={styles.form} onSubmit={handleSubmit}>
                       <label className="label-primary">Password</label>
                       <Field name="password">
@@ -63,7 +93,7 @@ class KeyStore extends Component {
                         size="100%"
                         fontWeight={500}
                         className="mt-4"
-                        disabled={submitting}
+                        disabled={pristine || hasError}
                       />
                     </form>
                   )}
@@ -77,4 +107,4 @@ class KeyStore extends Component {
   }
 }
 
-export default KeyStore;
+export default withRouter(KeyStore);

@@ -7,6 +7,7 @@ import styles from './styles.less';
 
 const FileUpload = ({ setFile }) => {
   const [fileName, setFileName] = useState('');
+  const [error, setError] = useState('');
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
@@ -15,8 +16,39 @@ const FileUpload = ({ setFile }) => {
   });
 
   useEffect(() => {
-    setFileName(acceptedFiles[0] && acceptedFiles[0].name);
-    setFile(acceptedFiles[0]);
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      // Do whatever you want with the file contents
+      let content = reader.result;
+      let hasError = false;
+
+      try {
+        const jsonFile = JSON.parse(content);
+
+        if (!jsonFile.version || !jsonFile.address || !jsonFile.crypto) {
+          setError('Invalid keystore file');
+          hasError = true;
+        } else {
+          content = jsonFile;
+        }
+      } catch (e) {
+        setError('Invalid keystore file');
+        hasError = true;
+      }
+
+      setFile({
+        hasError,
+        file: acceptedFiles[0],
+        content,
+      });
+
+      setFileName(acceptedFiles[0] && acceptedFiles[0].name);
+    };
+
+    if (acceptedFiles[0]) {
+      reader.readAsText(acceptedFiles[0]);
+    }
   }, [acceptedFiles]);
 
   const files = acceptedFiles.map((file) => (
@@ -38,10 +70,17 @@ const FileUpload = ({ setFile }) => {
       ) : (
         <>
           <div>{files}</div>
-          <p className={styles.message}>
-            <span className="icon-correct-circle" />
-            Your Wallet is successfully encrypted
-          </p>
+          {error ? (
+            <p className={styles.message}>
+              <span className="icon-multiply" />
+              Invalid keystore
+            </p>
+          ) : (
+            <p className={styles.message}>
+              <span className="icon-correct-circle" />
+              Your Wallet is successfully encrypted
+            </p>
+          )}
         </>
       )}
     </div>
