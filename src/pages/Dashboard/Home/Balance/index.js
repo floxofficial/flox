@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
+import React, { useState } from 'react';
+
 import CopyText from 'Root/components/CopyText';
 import QrCodeModal from 'Root/Block/ModalContent/QrCodeModal';
+
 import styles from './styles.less';
 
-const Balance = ({ balance, address }) => {
+const Balance = ({ balance, address, options }) => {
   const [showModal, setShowModal] = useState(false);
   const onShowModal = (status) => {
     setShowModal(status);
@@ -17,6 +20,7 @@ const Balance = ({ balance, address }) => {
       <h6 className={styles['balance-value']}>
         <span>{balance}</span>
         <span className={styles.currency}> CFX</span>
+        <span>${parseFloat(balance) * options.usd}</span>
       </h6>
       <div className="row justify-content-between mt-3 pt-2 align-items-center">
         <div className="col-auto">
@@ -30,7 +34,10 @@ const Balance = ({ balance, address }) => {
         </div>
       </div>
       <div className={classNames(styles.address, styles.box)}>
-        <CopyText text={address} content={<span className={styles['address-text']}>{address}</span>} />
+        <CopyText
+          text={address}
+          content={<span className={styles['address-text']}>{address}</span>}
+        />
       </div>
     </>
   );
@@ -41,4 +48,6 @@ Balance.propTypes = {
   address: PropTypes.string.isRequired,
 };
 
-export default Balance;
+export default connect((store) => ({
+  options: store.options,
+}))(Balance);

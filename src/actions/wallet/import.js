@@ -19,11 +19,6 @@ export default (values) => {
       },
     });
 
-    store.dispatch({
-      type: actions.password.ADD,
-      payload: values.password,
-    });
-
     loadAccount(account);
 
     return true;

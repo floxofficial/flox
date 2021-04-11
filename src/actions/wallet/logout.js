@@ -7,7 +7,7 @@ export default async () => {
   });
 
   store.dispatch({
-    type: actions.transaction.LOGOUT,
+    type: actions.transactions.LOGOUT,
   });
 
   store.dispatch({

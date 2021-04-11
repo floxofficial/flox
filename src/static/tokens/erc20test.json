@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "MiniERC20",
+    "symbol": "MNC",
+    "address": "cfxtest:acbe295bdemrudh00r1nj7tdbncs112nhpy8bn13vm"
+  },
+  {
+    "id": 1,
+    "name": "FansCoin",
+    "symbol": "FC",
+    "address": "cfxtest:achkx35n7vngfxgrm7akemk3ftzy47t61yk5nn270s"
+  },
+  {
+    "id": 2,
+    "name": "Wrapped Conflux",
+    "symbol": "WCFX",
+    "address": "cfxtest:achs3nehae0j6ksvy1bhrffsh1rtfrw1f6w1kzv46t"
+  },
+  {
+    "id": 3,
+    "name": "DEX-BTC",
+    "symbol": "DEX-BTC",
+    "address": "cfxtest:acbe564fg823v0pznua6k3rcy4dxg6d5k6cnmv9hb1"
+  }
+]

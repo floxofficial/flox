@@ -1,4 +1,4 @@
-import actions from 'Root/actions';
+import types from 'Root/actions';
 
 const defaultState = {
   network: 'mainnet',
@@ -6,10 +6,17 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case actions.options.CHANGE: {
+    case types.options.CHANGE: {
       return {
         ...state,
         ...action.payload,
+      };
+    }
+
+    case types.options.USD_PRICE: {
+      return {
+        ...state,
+        usd: action.payload,
       };
     }
 

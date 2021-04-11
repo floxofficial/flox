@@ -71,7 +71,7 @@ const Dashboard = (props) => {
           <Balance balance={activeAccount.balance} address={activeAccount.address} />
         </div>
         <div className={classNames('content-card', styles['token-card'])}>
-          <Token tokens={tokens} />
+          <Token />
         </div>
       </div>
     </div>

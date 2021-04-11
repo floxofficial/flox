@@ -1,0 +1,182 @@
+[
+  {
+    "id": 0,
+    "name": "FansCoin",
+    "symbol": "FC",
+    "address": "cfx:achc8nxj7r451c223m18w2dwjnmhkd6rxawrvkvsy2"
+  },
+  {
+    "id": 1,
+    "name": "conflux MOON",
+    "symbol": "cMOON",
+    "address": "cfx:achcuvuasx3t8zcumtwuf35y51sksewvca0h0hj71a"
+  },
+  {
+    "id": 2,
+    "name": "Wrapped Conflux",
+    "symbol": "WCFX",
+    "address": "cfx:acg158kvr8zanb1bs048ryb6rtrhr283ma70vz70tx"
+  },
+  {
+    "id": 3,
+    "name": "conflux ETH",
+    "symbol": "cETH",
+    "address": "cfx:acdrf821t59y12b4guyzckyuw2xf1gfpj2ba0x4sj6"
+  },
+  {
+    "id": 4,
+    "name": "conflux USDT",
+    "symbol": "cUSDT",
+    "address": "cfx:acf2rcsh8payyxpg6xj7b0ztswwh81ute60tsw35j7"
+  },
+  {
+    "id": 5,
+    "name": "conflux USDC",
+    "symbol": "cUSDC",
+    "address": "cfx:aca13suyk7mbgxw9y3wbjn9vd136swu6s21tg67xmb"
+  },
+  {
+    "id": 6,
+    "name": "conflux AMP",
+    "symbol": "cAMP",
+    "address": "cfx:acdkyd8tmezzs6cvmfwtpkg7y9k8cnhdapfcganwt9"
+  },
+  {
+    "id": 7,
+    "name": "conflux DAI",
+    "symbol": "cDAI",
+    "address": "cfx:acd3fhs4u0yzx7kpzrujhj15yg63st2z6athmtka95"
+  },
+  {
+    "id": 8,
+    "name": "conflux DPI",
+    "symbol": "cDPI",
+    "address": "cfx:acekx06rp1bcdkup1ubr2vw77tsrw81ysy0d3n7x5s"
+  },
+  {
+    "id": 9,
+    "name": "conflux COMP",
+    "symbol": "cCOMP",
+    "address": "cfx:accedvremfhmym60f9u4nghb8utxcgbtb2acewunwh"
+  },
+  {
+    "id": 10,
+    "name": "conflux BTC",
+    "symbol": "cBTC",
+    "address": "cfx:acbb225r9wc7a2kt1dz9gw0tuv5v1kgdjuh5akdh3t"
+  },
+  {
+    "id": 11,
+    "name": "conflux LINK",
+    "symbol": "cLINK",
+    "address": "cfx:accuj4mt4kmnhzr1b3xe653n63694tc0cjuzkj5t94"
+  },
+  {
+    "id": 12,
+    "name": "conflux BAND",
+    "symbol": "cBAND",
+    "address": "cfx:acbyc3ahvctpx5cabfw6n1s9fv40trur6ydbu1zr4x"
+  },
+  {
+    "id": 13,
+    "name": "CRCL_BTC",
+    "symbol": "CRCL_BTC_symbol",
+    "address": "cfx:acbgx6fr4erywfs1u8jysdjkdyw697386ykw31nddj"
+  },
+  {
+    "id": 14,
+    "name": "conflux Binance Coin",
+    "symbol": "cBNB",
+    "address": "cfx:acczy0zs2fu03pnx0w1u19pkprsm6r50spkz7eg4c3"
+  },
+  {
+    "id": 15,
+    "name": "conflux SWRV",
+    "symbol": "cSWRV",
+    "address": "cfx:acdkf73rh2ewwm3hbwddd00wy3v3fyau3ew61jbrbj"
+  },
+  {
+    "id": 16,
+    "name": "conflux YFII",
+    "symbol": "cYFII",
+    "address": "cfx:accxdrf7c3vntwyyhj8ws8mcatd433k8sjvrjbx39r"
+  },
+  {
+    "id": 17,
+    "name": "conflux DF",
+    "symbol": "cDF",
+    "address": "cfx:acc3hzr7e570ccnrb91wgufwcs6a171jvuax68krfm"
+  },
+  {
+    "id": 18,
+    "name": "conflux YFI",
+    "symbol": "cYFI",
+    "address": "cfx:acfezfepc4wuxj2fmfya1w9kwjutk7wtaudbz0k6dj"
+  },
+  {
+    "id": 19,
+    "name": "conflux UMA",
+    "symbol": "cUMA",
+    "address": "cfx:ach3cmt7wze9tkhxctkdzfsaf0azcppgvpfwfdzmku"
+  },
+  {
+    "id": 20,
+    "name": "conflux KNC",
+    "symbol": "cKNC",
+    "address": "cfx:acamc98zc1a93ap8u9xaruc2kefpd6mpy6089w6yv0"
+  },
+  {
+    "id": 21,
+    "name": "conflux KP3R",
+    "symbol": "cKP3R",
+    "address": "cfx:acdcap62vh2km00y4fh117ngz8jauj19g618km65m6"
+  },
+  {
+    "id": 22,
+    "name": "conflux SNX",
+    "symbol": "cSNX",
+    "address": "cfx:acg797d4c6v007y46hj1juk7z0ac86m04uc13n4bcg"
+  },
+  {
+    "id": 23,
+    "name": "conflux LEND",
+    "symbol": "cLEND",
+    "address": "cfx:acff13n54n4t02cy6uc8xfdxrf4enanr5jh6vy761g"
+  },
+  {
+    "id": 24,
+    "name": "conflux FOR",
+    "symbol": "cFOR",
+    "address": "cfx:acc1uh4ftd4jhser99uk8nk8unkbz8ykmyxt0n27v5"
+  },
+  {
+    "id": 25,
+    "name": "conflux sUSD",
+    "symbol": "csUSD",
+    "address": "cfx:achj7swfxkg634hcvg70ttywtgyn2w619jxscmjdp3"
+  },
+  {
+    "id": 26,
+    "name": "conflux Ins3.Finance Coin",
+    "symbol": "cITF",
+    "address": "cfx:acc8599utu7nayj50w393eycznhv4e23g2ys6xmvf5"
+  },
+  {
+    "id": 27,
+    "name": "conflux Flux Protocol",
+    "symbol": "cFLUX",
+    "address": "cfx:acgbjtsmfpex2mbn97dsygtkfrt952sp0psmh8pnvz"
+  },
+  {
+    "id": 28,
+    "name": "conflux Bytom minted",
+    "symbol": "cMBTM",
+    "address": "cfx:acdz7hfvku8fm0j8k065urs2n59k0e33npbjtyp2bv"
+  },
+  {
+    "id": 29,
+    "name": "Treasure ERC 20",
+    "symbol": "TREA",
+    "address": "cfx:acb9wkgbefcja9rkpds5ve4cm5643jmebae7xjzz8f"
+  }
+]

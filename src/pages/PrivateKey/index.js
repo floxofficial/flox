@@ -31,10 +31,6 @@ class PrivateKey extends Component {
       errors.privateKey = 'Invalid privateKey';
     }
 
-    if (values.password && values.password.length < 8) {
-      errors.password = 'Password must be 8 or more characters.';
-    }
-
     return errors;
   }
 
@@ -48,19 +44,8 @@ class PrivateKey extends Component {
             validate={(values) => this.validateForm(values)}
             render={({ submitError, handleSubmit, invalid }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
-                <label className="label-primary">Set a password</label>
-                <Field name="password">
-                  {({ input, meta }) => (
-                    <Input
-                      type="password"
-                      placeholder="Do not forget this password"
-                      variant="pass"
-                      input={input}
-                      meta={meta}
-                    />
-                  )}
-                </Field>
                 <label className="label-primary">PrivateKey</label>
+
                 <Field name="privateKey">
                   {({ input, meta }) => (
                     <Input
@@ -72,7 +57,9 @@ class PrivateKey extends Component {
                     />
                   )}
                 </Field>
+
                 {submitError && <div className="error">{submitError}</div>}
+
                 <Button
                   type="submit"
                   content="Unlock Wallet"
