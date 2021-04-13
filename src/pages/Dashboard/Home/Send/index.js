@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import { Field, Form } from 'react-final-form';
-import { Collapse } from 'react-bootstrap';
 import classNames from 'classnames';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Collapse } from 'react-bootstrap';
+import { Field, Form } from 'react-final-form';
+
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
-import SelectOption from 'Root/components/SelectOption';
 import Checkbox from 'Root/components/Checkbox';
+import SelectOption from 'Root/components/SelectOption';
 import ConfirmModal from 'Root/Block/ModalContent/ConfirmModal';
+
 import styles from './styles.less';
 
 class Send extends Component {
@@ -19,6 +22,7 @@ class Send extends Component {
       showAdvance: false,
       selectedValue: '',
     };
+
     this.onChange = this.onChange.bind(this);
     this.onShowModal = this.onShowModal.bind(this);
     this.onShowAdvance = this.onShowAdvance.bind(this);
@@ -52,11 +56,16 @@ class Send extends Component {
   }
 
   render() {
-    const items = [
-      { value: 'cfx', label: 'CFX' },
-      { value: 'aaa', label: 'Aaa' },
-      { value: 'bbb', label: 'Bbb' },
-    ];
+    const { tokens } = this.props;
+
+    const filteredTokens = tokens.filter((x) => x.balance != 0);
+    const items = filteredTokens.map((x) => ({ value: x.symbol, label: x.symbol }));
+
+    items.unshift({
+      value: 'CFX',
+      label: 'CFX',
+    });
+
     return (
       <div className="row">
         <div className="col-10">
@@ -143,7 +152,11 @@ class Send extends Component {
                 <Collapse in={this.state.showAdvance}>
                   <div id="collapse-content">
                     <div className="mt-4">
-                      <Checkbox label="Recommended" onChange={this.onChange} checked={this.state.checked} />
+                      <Checkbox
+                        label="Recommended"
+                        onChange={this.onChange}
+                        checked={this.state.checked}
+                      />
                     </div>
 
                     <div className="row mt-3">
@@ -205,4 +218,6 @@ class Send extends Component {
   }
 }
 
-export default Send;
+export default connect((store) => ({
+  tokens: store.tokens,
+}))(Send);
