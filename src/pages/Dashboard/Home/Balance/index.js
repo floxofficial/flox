@@ -20,7 +20,7 @@ const Balance = ({ balance, address, options }) => {
       <h6 className={styles['balance-value']}>
         <span>{balance}</span>
         <span className={styles.currency}> CFX</span>
-        <span>${parseFloat(balance) * options.usd}</span>
+        {/* <span>${parseFloat(balance) * options.usd}</span> */}
       </h6>
       <div className="row justify-content-between mt-3 pt-2 align-items-center">
         <div className="col-auto">
@@ -44,7 +44,6 @@ const Balance = ({ balance, address, options }) => {
 };
 
 Balance.propTypes = {
-  balance: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
 };
 

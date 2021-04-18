@@ -5,13 +5,13 @@ import ModalDialog from 'Root/components/ModalDialog';
 import Button from 'Root/components/Button';
 import styles from './styles.less';
 
-const StatusModal = ({ show, setShow, address }) => (
+const StatusModal = ({ show, setShow, hash }) => (
   <ModalDialog show={show} setShow={setShow}>
     <div className={styles.content}>
       <div className="d-flex flex-column justify-content-center text-center">
         <span className={classNames('icon-correct-circle', styles.icon)} />
         <h1 className={styles.title}>Successful Sending</h1>
-        <p className={styles.text}>{address}</p>
+        <p className={styles.text}>{hash}</p>
         <Button
           variant="primary"
           content="View in Confluxscan"
@@ -28,7 +28,6 @@ const StatusModal = ({ show, setShow, address }) => (
 StatusModal.propTypes = {
   show: PropTypes.bool.isRequired,
   setShow: PropTypes.func.isRequired,
-  address: PropTypes.string.isRequired,
 };
 
 export default StatusModal;

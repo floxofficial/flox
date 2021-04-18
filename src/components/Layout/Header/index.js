@@ -60,6 +60,7 @@ const Header = ({ isLoggedIn, ...props }) => {
           </div>
           {isLoggedIn && (
             <Link
+              to="#"
               onClick={handleLogout}
               className={classNames(styles.logout, 'icon-power-button')}
             />

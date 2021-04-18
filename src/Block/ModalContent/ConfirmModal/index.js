@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ModalDialog from 'Root/components/ModalDialog';
+
 import Button from 'Root/components/Button';
+import sendAction from 'Root/actions/wallet/send';
+import ModalDialog from 'Root/components/ModalDialog';
 import StatusModal from 'Root/Block/ModalContent/StatusModal';
+
 import styles from './styles.less';
 
-const address = '0x4b8276fc8003a89fe2a0ad9de26ca82c2e26cb3339877b487dd2bd7219797a9e';
+const defaultTransaction = {
+  from: '',
+  to: '',
+  amount: '0',
+  gasLimit: 0,
+  gasPrice: 0,
+  token: 'CFX',
+};
 
-const ConfirmModal = ({ show, setShow }) => {
+const ConfirmModal = ({ show, setShow, transaction = defaultTransaction }) => {
   const [showStatusModal, setShowStatusModal] = useState(false);
-  const onShowStatusModal = (status) => {
+  const [txHash, setTxHash] = useState('');
+
+  const onShowStatusModal = async (status) => {
+    const hash = await sendAction(transaction);
+
     setShow(false);
-    setShowStatusModal(status);
+    setTxHash(hash);
+    setShowStatusModal(true);
   };
 
   return (
@@ -26,9 +41,7 @@ const ConfirmModal = ({ show, setShow }) => {
             </div>
             <div className="col flex-column pl-2">
               <div className={styles.label}>From</div>
-              <div className={styles.value}>
-                0x115fcce25b23b7341c6b4da4ce04c43886f0acd2
-              </div>
+              <div className={styles.value}>{transaction.from}</div>
             </div>
           </div>
 
@@ -42,9 +55,7 @@ const ConfirmModal = ({ show, setShow }) => {
             </div>
             <div className="col flex-column pl-2">
               <div className={styles.label}>To</div>
-              <div className={styles.value}>
-                0x115fcce25b23b7341c6b4da4ce04c43886f0acd2
-              </div>
+              <div className={styles.value}>{transaction.to}</div>
             </div>
           </div>
 
@@ -58,7 +69,11 @@ const ConfirmModal = ({ show, setShow }) => {
               <h6 className={styles['amount-label']}>Amount</h6>
             </div>
             <div className="col-auto">
-              <p className={styles.amount}>280 CFX / $11</p>
+              <p className={styles.amount}>
+                {transaction.amount}
+                &nbsp;
+                {transaction.token}
+              </p>
             </div>
           </div>
           <div
@@ -71,7 +86,10 @@ const ConfirmModal = ({ show, setShow }) => {
               <h6 className={styles['amount-label']}>Transaction fee</h6>
             </div>
             <div className="col-auto">
-              <p className={styles.amount}>280 CFX / $11</p>
+              <p className={styles.amount}>
+                {transaction.gasPrice * transaction.gasLimit}
+                &nbsp; drip
+              </p>
             </div>
           </div>
 
@@ -82,6 +100,9 @@ const ConfirmModal = ({ show, setShow }) => {
               size="104px"
               fontSize={16}
               fontWeight={500}
+              onClick={() => {
+                setShow(false);
+              }}
             />
 
             <Button
@@ -91,13 +112,15 @@ const ConfirmModal = ({ show, setShow }) => {
               fontSize={16}
               fontWeight={500}
               className="ml-3"
-              onClick={() => onShowStatusModal(true)}
+              onClick={() => {
+                onShowStatusModal(true);
+              }}
             />
           </div>
         </div>
       </ModalDialog>
 
-      <StatusModal show={showStatusModal} setShow={onShowStatusModal} address={address} />
+      <StatusModal show={showStatusModal} setShow={onShowStatusModal} hash={txHash} />
     </>
   );
 };

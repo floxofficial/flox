@@ -7,6 +7,8 @@ import { Field, Form } from 'react-final-form';
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import Checkbox from 'Root/components/Checkbox';
+import bigIntToNumber from 'Root/helpers/bigIntToNumber';
+import validateAddress from 'Root/helpers/validateAddress';
 import SelectOption from 'Root/components/SelectOption';
 import ConfirmModal from 'Root/Block/ModalContent/ConfirmModal';
 
@@ -20,7 +22,13 @@ class Send extends Component {
       checked: false,
       showModal: false,
       showAdvance: false,
-      selectedValue: '',
+      selectedValue: { value: 'CFX', label: 'CFX' },
+      transaction: {
+        from: '',
+        to: '',
+        amount: '',
+        token: '',
+      },
     };
 
     this.onChange = this.onChange.bind(this);
@@ -33,8 +41,11 @@ class Send extends Component {
     this.setState({ checked: !this.state.checked });
   }
 
-  onShowModal(status) {
-    this.setState({ showModal: status });
+  onShowModal(status, transaction) {
+    this.setState({
+      showModal: status,
+      transaction,
+    });
   }
 
   onShowAdvance() {
@@ -46,17 +57,49 @@ class Send extends Component {
     // console.warn(value);
   }
 
-  onSubmit(values) {
-    // console.warn(values);
+  async onSubmit(values) {
+    const { wallet } = this.props;
+    const { selectedValue } = this.state;
+
+    const transaction = {
+      to: values.address,
+      amount: values.amount,
+      from: wallet[0].address,
+      token: selectedValue.value,
+      gasPrice: parseFloat(values.gasPrice) || 1,
+      gasLimit: parseFloat(values.gasLimit) || 21000,
+    };
+
+    this.onShowModal(true, transaction);
   }
 
   validateForm(values) {
     const errors = {};
+
+    const { options, tokens, wallet } = this.props;
+    const network = options.network === 'mainnet' ? 1 : 0;
+    const { selectedValue } = this.state;
+    const selectedToken = tokens.find((x) => x.symbol === selectedValue.value);
+    const tokenBalance =
+      selectedValue.value === 'CFX'
+        ? wallet[0].balance
+        : bigIntToNumber(selectedToken.balance);
+
+    if (!validateAddress(values.address, network)) {
+      errors.address = 'Address is invalid.';
+    }
+
+    const amountFloat = values.amount ? parseFloat(values.amount) : 0;
+
+    if (amountFloat > tokenBalance || amountFloat === 0) {
+      errors.amount = 'Amount is invalid.';
+    }
+
     return errors;
   }
 
   render() {
-    const { tokens } = this.props;
+    const { tokens, options } = this.props;
 
     const filteredTokens = tokens.filter((x) => x.balance != 0);
     const items = filteredTokens.map((x) => ({ value: x.symbol, label: x.symbol }));
@@ -70,9 +113,28 @@ class Send extends Component {
       <div className="row">
         <div className="col-10">
           <Form
+            mutators={{
+              setMax: (args, state, utils) => {
+                const { tokens, wallet } = this.props;
+                const { selectedValue } = this.state;
+
+                let maxBalance;
+
+                if (selectedValue.value === 'CFX') {
+                  maxBalance = wallet[0].balance;
+                } else {
+                  const { balance } = tokens.find(
+                    (x) => x.symbol === selectedValue.value,
+                  );
+                  maxBalance = bigIntToNumber(balance);
+                }
+
+                utils.changeValue(state, 'amount', () => maxBalance);
+              },
+            }}
             onSubmit={(values) => this.onSubmit(values)}
             validate={(values) => this.validateForm(values)}
-            render={({ submitError, handleSubmit, submitting }) => (
+            render={({ submitError, handleSubmit, submitting, form }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="label-primary">To Address</label>
@@ -80,7 +142,11 @@ class Send extends Component {
                     {({ input, meta }) => (
                       <Input
                         type="text"
-                        placeholder="Ex. 0x115fcce25b23b7341c6b4da4ce04c43886f0acd2"
+                        placeholder={
+                          options.network === 'mainnet'
+                            ? 'cfx:aaketjh9tkj5g2k4zx3kfvb9vkku8nr006n0en4fhe'
+                            : 'cfxtest:aaketjh9tkj5g2k4zx3kfvb9vkku8nr006n0en4fhe'
+                        }
                         input={input}
                         meta={meta}
                       />
@@ -96,7 +162,9 @@ class Send extends Component {
                           <Input
                             type="number"
                             variant="max"
-                            setMax={() => {}}
+                            setMax={() => {
+                              form.mutators.setMax();
+                            }}
                             placeholder="1"
                             input={input}
                             meta={meta}
@@ -124,7 +192,7 @@ class Send extends Component {
                   <div className="col-auto">
                     <p className={styles['fee-value']}>
                       0.00845
-                      <span> CFX</span>
+                      <span> drip</span>
                     </p>
                   </div>
                 </div>
@@ -162,10 +230,10 @@ class Send extends Component {
                     <div className="row mt-3">
                       <div className="col form-group mb-0">
                         <label className="label-primary pt-2">
-                          Gas
+                          Gas Price
                           <span className="label-optional"> (Gdrip)</span>
                         </label>
-                        <Field name="gas">
+                        <Field name="gasPrice">
                           {({ input, meta }) => (
                             <Input
                               type="number"
@@ -178,12 +246,12 @@ class Send extends Component {
                         </Field>
                       </div>
                       <div className="col form-group mb-0">
-                        <label className="label-primary pt-2">Gas Price</label>
-                        <Field name="price">
+                        <label className="label-primary pt-2">Gas Limit</label>
+                        <Field name="gasLimit">
                           {({ input, meta }) => (
                             <Input
                               type="number"
-                              placeholder="1"
+                              placeholder="21000"
                               input={input}
                               meta={meta}
                               disabled={this.state.checked}
@@ -205,13 +273,22 @@ class Send extends Component {
                     fontWeight={500}
                     className="mt-4-5"
                     disabled={submitting}
-                    onClick={() => this.onShowModal(true)}
+                    onClick={() => {
+                      console.log(form);
+                      console.log(form.getState());
+                      console.log(form.getFieldState());
+                      console.log(form.getRegisteredFields());
+                    }}
                   />
                 </div>
               </form>
             )}
           />
-          <ConfirmModal show={this.state.showModal} setShow={this.onShowModal} />
+          <ConfirmModal
+            show={this.state.showModal}
+            setShow={this.onShowModal}
+            transaction={this.state.transaction}
+          />
         </div>
       </div>
     );
@@ -220,4 +297,6 @@ class Send extends Component {
 
 export default connect((store) => ({
   tokens: store.tokens,
+  options: store.options,
+  wallet: store.wallet,
 }))(Send);

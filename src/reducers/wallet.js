@@ -3,12 +3,7 @@ import actions from 'Root/actions';
 export default (state = [], action) => {
   switch (action.type) {
     case actions.wallet.CREATE: {
-      const newState = state.map((x) => ({
-        ...x,
-        active: false,
-      }));
-
-      return [...newState, action.payload];
+      return [action.payload];
     }
 
     case actions.wallet.LOGOUT: {

@@ -8,12 +8,19 @@ import erc20main from 'Root/static/tokens/erc20main.json';
 import erc20test from 'Root/static/tokens/erc20test.json';
 
 const getTokenDetails = async (token, contract, address) => {
-  const balance = await contract.balanceOf(address);
+  try {
+    const balance = await contract.balanceOf(address);
 
-  return {
-    ...token,
-    balance,
-  };
+    return {
+      ...token,
+      balance,
+    };
+  } catch (e) {
+    return {
+      ...token,
+      balance: 0,
+    };
+  }
 };
 
 const getListAllTokens = async (account, network) => {

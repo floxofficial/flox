@@ -18,6 +18,7 @@ const Rows = (transactions) => {
     <tr key={shortid.generate()}>
       <td>
         <Link
+          to="#"
           onClick={() => {
             shell.openExternal(`${currentExplorer()}/transaction/${row.hash}`);
           }}

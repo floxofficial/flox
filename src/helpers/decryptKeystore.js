@@ -1,8 +1,15 @@
 import { PrivateKeyAccount, CONST } from 'js-conflux-sdk';
 
+import store from 'Root/store';
+
 export default (content, password) => {
   try {
-    const account = PrivateKeyAccount.decrypt(content, password, CONST.MAINNET_ID);
+    const { options } = store.getState();
+    const account = PrivateKeyAccount.decrypt(
+      content,
+      password,
+      options.network === 'mainnet' ? CONST.MAINNET_ID : CONST.TESTNET_ID,
+    );
 
     return account;
   } catch (e) {

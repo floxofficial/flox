@@ -1,0 +1,52 @@
+import { Conflux, CONST } from 'js-conflux-sdk';
+
+import store from 'Root/store';
+import erc20abi from 'Root/static/erc20-abi.json';
+
+export default async (transaction) => {
+  const { options, wallet } = store.getState();
+  const account = wallet[0];
+
+  const url =
+    options.network === 'mainnet'
+      ? 'http://main.confluxrpc.org/v2'
+      : 'http://test.confluxrpc.org/v2';
+
+  const networkId = options.network === 'mainnet' ? CONST.MAINNET_ID : CONST.TESTNET_ID;
+
+  const conflux = new Conflux({
+    url,
+    networkId,
+  });
+
+  conflux.wallet.addPrivateKey(account.privateKey);
+
+  if (transaction.token === 'CFX') {
+    const hash = await conflux.sendTransaction({
+      from: account.address,
+      to: transaction.address,
+      value: parseFloat(transaction.amount) * 1000000000000000000,
+      gasPrice: transaction.gasPrice,
+      gas: transaction.gasLimit,
+    });
+
+    return hash;
+  }
+
+  const { tokens } = store.getState();
+  const token = tokens.find((x) => x.symbol === transaction.token);
+
+  const contract = conflux.Contract({
+    abi: erc20abi,
+    address: token.address,
+  });
+
+  const hash = await contract
+    .transfer(
+      transaction.address,
+      BigInt(parseFloat(transaction.amount) * 1000000000000000000),
+    )
+    .sendTransaction({ from: account.address });
+
+  return hash;
+};

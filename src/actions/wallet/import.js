@@ -7,7 +7,11 @@ import loadAccount from '../load';
 
 export default (values) => {
   try {
-    const wallet = new Wallet(CONST.MAINNET_ID);
+    const { options } = store.getState();
+
+    const wallet = new Wallet(
+      options.network === 'mainnet' ? CONST.MAINNET_ID : CONST.TESTNET_ID,
+    );
 
     const account = wallet.addPrivateKey(values.privateKey);
 
