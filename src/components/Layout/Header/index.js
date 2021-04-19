@@ -6,7 +6,7 @@ import React, { useState, Fragment } from 'react';
 
 import changeNetwork from 'Root/actions/network';
 import { homePage } from 'Root/static/routes';
-import logo from 'Root/assets/images/logo.png';
+import logo from 'Root/assets/images/logo.svg';
 import logoutAction from 'Root/actions/wallet/logout';
 
 import styles from './styles.less';

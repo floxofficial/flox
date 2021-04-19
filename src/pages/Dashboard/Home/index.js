@@ -6,6 +6,7 @@ import { Tab, Tabs } from 'react-bootstrap';
 import loadDashboard from 'Root/actions/load';
 import PrivateInfo from 'Root/Block/PrivateInfo';
 
+import Loading from 'Root/components/Loading';
 import Send from './Send';
 import Token from './Token';
 import Balance from './Balance';
@@ -30,7 +31,7 @@ const Dashboard = (props) => {
   // convert cfx to usd
 
   if (!activeAccount.loaded) {
-    return <div>LOADING</div>;
+    return <Loading />;
   }
 
   return (
