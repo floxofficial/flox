@@ -1,11 +1,14 @@
-import React from 'react';
-import LoginButton from 'Root/components/LoginButton';
-import * as route from 'Root/static/routes';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import shortid from 'shortid';
+import LoginButton from 'Root/components/LoginButton';
+import * as route from 'Root/static/routes';
+import ModalDialog from 'Root/components/ModalDialog';
+import WaitingContent from 'Root/Block/ModalContent/WaitingModal';
 import styles from './styles.less';
 
 const HomePage = (props) => {
+  const [showModal, setShowModal] = useState(false);
   const buttons = [
     {
       title: 'Create Wallet',
@@ -46,6 +49,10 @@ const HomePage = (props) => {
                 <LoginButton item={button} history={props.history} />
               </div>
             ))}
+            <button className="button-primary" onClick={() => setShowModal(true)}>test modal</button>
+            <ModalDialog show={showModal} setShow={setShowModal} width={360}>
+              <WaitingContent message="waiting to connect" />
+            </ModalDialog>
           </div>
         </div>
       </div>

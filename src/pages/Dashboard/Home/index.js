@@ -31,7 +31,7 @@ const Dashboard = (props) => {
   // convert cfx to usd
 
   if (!activeAccount.loaded) {
-    return <Loading />;
+    return <Loading isFull />;
   }
 
   return (
