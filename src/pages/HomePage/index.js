@@ -26,7 +26,10 @@ const HomePage = (props) => {
       link: route.keyStorePage,
     },
     {
-      title: 'Ledger',
+      title: <>
+        Ledger
+        <span> (soon)</span>
+      </>,
       desc: 'Sign and connect with ledger',
       icon: 'icon-ledger',
     },
