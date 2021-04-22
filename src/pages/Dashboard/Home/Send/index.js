@@ -13,6 +13,7 @@ import SelectOption from 'Root/components/SelectOption';
 import ConfirmModal from 'Root/Block/ModalContent/ConfirmModal';
 
 import styles from './styles.less';
+import { parse } from 'uuid';
 
 class Send extends Component {
   constructor(props) {
@@ -66,8 +67,8 @@ class Send extends Component {
       amount: values.amount,
       from: wallet[0].address,
       token: selectedValue.value,
-      gasPrice: parseFloat(values.gasPrice),
-      gasLimit: parseFloat(values.gasLimit),
+      gasPrice: parseFloat(values.gasPrice) || 1,
+      gasLimit: parseFloat(values.gasLimit) || 55000,
     };
 
     this.onShowModal(true, transaction);
@@ -134,7 +135,7 @@ class Send extends Component {
             }}
             onSubmit={(values) => this.onSubmit(values)}
             validate={(values) => this.validateForm(values)}
-            render={({ submitError, handleSubmit, submitting, form }) => (
+            render={({ submitError, handleSubmit, submitting, form, values }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="label-primary">To Address</label>
@@ -191,7 +192,8 @@ class Send extends Component {
                   </div>
                   <div className="col-auto">
                     <p className={styles['fee-value']}>
-                      0.00845
+                      {(parseFloat(values.gasPrice) || 1) *
+                        (parseFloat(values.gasLimit) || 55000)}
                       <span> drip</span>
                     </p>
                   </div>
@@ -251,7 +253,7 @@ class Send extends Component {
                           {({ input, meta }) => (
                             <Input
                               type="number"
-                              placeholder="21000"
+                              placeholder="55000"
                               input={input}
                               meta={meta}
                               disabled={this.state.checked}

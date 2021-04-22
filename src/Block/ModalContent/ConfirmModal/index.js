@@ -92,7 +92,7 @@ const ConfirmModal = ({ show, setShow, transaction = defaultTransaction }) => {
             </div>
             <div className="col-auto">
               <p className={styles.amount}>
-                {transaction.gasPrice || 1 * transaction.gasLimit || 21000}
+                {(transaction.gasPrice || 1) * (transaction.gasLimit || 55000)}
                 &nbsp; drip
               </p>
             </div>
