@@ -6,6 +6,7 @@ import Button from 'Root/components/Button';
 import sendAction from 'Root/actions/wallet/send';
 import ModalDialog from 'Root/components/ModalDialog';
 import StatusModal from 'Root/Block/ModalContent/StatusModal';
+import WaitingContent from 'Root/Block/ModalContent/WaitingModal';
 
 import styles from './styles.less';
 
@@ -20,12 +21,16 @@ const defaultTransaction = {
 
 const ConfirmModal = ({ show, setShow, transaction = defaultTransaction }) => {
   const [showStatusModal, setShowStatusModal] = useState(false);
+  const [showLoadingModal, setShowLoadingModal] = useState(false);
   const [txHash, setTxHash] = useState('');
 
   const onShowStatusModal = async (status) => {
+    setShow(false);
+    setShowLoadingModal(true);
+
     const hash = await sendAction(transaction);
 
-    setShow(false);
+    setShowLoadingModal(false);
     setTxHash(hash);
     setShowStatusModal(true);
   };
@@ -87,7 +92,7 @@ const ConfirmModal = ({ show, setShow, transaction = defaultTransaction }) => {
             </div>
             <div className="col-auto">
               <p className={styles.amount}>
-                {transaction.gasPrice * transaction.gasLimit}
+                {transaction.gasPrice || 1 * transaction.gasLimit || 21000}
                 &nbsp; drip
               </p>
             </div>
@@ -120,7 +125,11 @@ const ConfirmModal = ({ show, setShow, transaction = defaultTransaction }) => {
         </div>
       </ModalDialog>
 
-      <StatusModal show={showStatusModal} setShow={onShowStatusModal} hash={txHash} />
+      <StatusModal show={showStatusModal} setShow={setShowStatusModal} hash={txHash} />
+
+      <ModalDialog show={showLoadingModal} setShow={setShowLoadingModal} width={360}>
+        <WaitingContent message="waiting to connect" />
+      </ModalDialog>
     </>
   );
 };

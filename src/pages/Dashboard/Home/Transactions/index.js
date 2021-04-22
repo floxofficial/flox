@@ -44,19 +44,27 @@ class Transactions extends Component {
   render() {
     return (
       <div>
-        <Table tableRows={Rows(this.props.transactions)} tableHead={head} />
-        <Button
-          content="View All Transactions"
-          variant="outline"
-          fontSize={14}
-          fontWeight={500}
-          size="100%"
-          onClick={() => {
-            shell.openExternal(
-              `${currentExplorer()}/address/${this.props.wallet[0].address}`,
-            );
-          }}
+        <Table
+          tableRows={Rows(this.props.transactions)}
+          tableHead={head}
+          transactions={this.props.transactions}
         />
+        {this.props.transactions.length ? (
+          <Button
+            content="View All Transactions"
+            variant="outline"
+            fontSize={14}
+            fontWeight={500}
+            size="100%"
+            onClick={() => {
+              shell.openExternal(
+                `${currentExplorer()}/address/${this.props.wallet[0].address}`,
+              );
+            }}
+          />
+        ) : (
+          ''
+        )}
       </div>
     );
   }

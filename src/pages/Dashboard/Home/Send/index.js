@@ -66,8 +66,8 @@ class Send extends Component {
       amount: values.amount,
       from: wallet[0].address,
       token: selectedValue.value,
-      gasPrice: parseFloat(values.gasPrice) || 1,
-      gasLimit: parseFloat(values.gasLimit) || 21000,
+      gasPrice: parseFloat(values.gasPrice),
+      gasLimit: parseFloat(values.gasLimit),
     };
 
     this.onShowModal(true, transaction);
@@ -219,13 +219,13 @@ class Send extends Component {
                 />
                 <Collapse in={this.state.showAdvance}>
                   <div id="collapse-content">
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                       <Checkbox
                         label="Recommended"
                         onChange={this.onChange}
                         checked={this.state.checked}
                       />
-                    </div>
+                    </div> */}
 
                     <div className="row mt-3">
                       <div className="col form-group mb-0">

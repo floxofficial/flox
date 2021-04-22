@@ -4,6 +4,7 @@ import store from 'Root/store';
 import erc20abi from 'Root/static/erc20-abi.json';
 
 export default async (transaction) => {
+  console.log(transaction);
   const { options, wallet } = store.getState();
   const account = wallet[0];
 
@@ -22,13 +23,21 @@ export default async (transaction) => {
   conflux.wallet.addPrivateKey(account.privateKey);
 
   if (transaction.token === 'CFX') {
-    const hash = await conflux.sendTransaction({
+    const params = {
       from: account.address,
-      to: transaction.address,
+      to: transaction.to,
       value: parseFloat(transaction.amount) * 1000000000000000000,
-      gasPrice: transaction.gasPrice,
-      gas: transaction.gasLimit,
-    });
+    };
+
+    if (transaction.gasPrice) {
+      params.gasPrice = transaction.gasPrice;
+    }
+
+    if (transaction.gasLimit) {
+      params.gas = transaction.gasLimit;
+    }
+
+    const hash = await conflux.sendTransaction(params);
 
     return hash;
   }
@@ -43,7 +52,7 @@ export default async (transaction) => {
 
   const hash = await contract
     .transfer(
-      transaction.address,
+      transaction.to,
       BigInt(parseFloat(transaction.amount) * 1000000000000000000),
     )
     .sendTransaction({ from: account.address });

@@ -7,7 +7,7 @@ import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import FileUpload from 'Root/components/FileUpload';
 import keystoreAction from 'Root/actions/wallet/keystore';
-import { walletInfoPage } from 'Root/static/routes';
+import { dashboardPage } from 'Root/static/routes';
 
 import styles from './styles.less';
 
@@ -44,7 +44,7 @@ class KeyStore extends Component {
     });
 
     if (result) {
-      return this.props.history.push(walletInfoPage);
+      return this.props.history.push(dashboardPage);
     }
 
     return {
