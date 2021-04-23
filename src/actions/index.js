@@ -25,4 +25,8 @@ export default {
     LOGOUT: 'tokens/LOGOUT',
     ADD_PRICE: 'tokens/ADD_PRICE',
   },
+  interval: {
+    START: 'interval/START',
+    STOP: 'interval/STOP',
+  },
 };

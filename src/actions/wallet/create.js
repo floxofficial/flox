@@ -5,6 +5,7 @@ import actions from 'Root/actions';
 import { walletInfoPage } from 'Root/static/routes';
 
 import loadAccount from '../load';
+import interval from '../interval';
 
 export default async (values, push) => {
   const { options } = store.getState();
@@ -29,6 +30,8 @@ export default async (values, push) => {
   });
 
   loadAccount(account);
+
+  interval();
 
   push(walletInfoPage);
 };

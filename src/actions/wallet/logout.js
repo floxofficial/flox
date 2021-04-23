@@ -3,6 +3,10 @@ import actions from 'Root/actions';
 
 export default async () => {
   store.dispatch({
+    type: actions.interval.STOP,
+  });
+
+  store.dispatch({
     type: actions.wallet.LOGOUT,
   });
 

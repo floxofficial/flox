@@ -87,13 +87,13 @@ class Send extends Component {
         : bigIntToNumber(selectedToken.balance);
 
     if (!validateAddress(values.address, network)) {
-      errors.address = 'Address is invalid.';
+      errors.address = 'Invalid address.';
     }
 
     const amountFloat = values.amount ? parseFloat(values.amount) : 0;
 
     if (amountFloat > tokenBalance || amountFloat === 0) {
-      errors.amount = 'Amount is invalid.';
+      errors.amount = 'Insufficient amount.';
     }
 
     return errors;
