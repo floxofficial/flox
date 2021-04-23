@@ -21,7 +21,7 @@ const Table = ({ tableHead, tableRows, transactions }) => (
         </table>
       </div>
     ) : (
-      'No transactions.'
+      <div className="child-position-center">You have no transactions</div>
     )}
   </>
 );
