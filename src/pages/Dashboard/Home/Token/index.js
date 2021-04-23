@@ -65,18 +65,20 @@ import styles from './styles.less';
 
 const Token = ({ tokens }) => {
   const filteredTokens = tokens.filter((x) => x.balance != 0);
-  console.warn('filter:', filteredTokens);
 
   return (
     <div>
       <h6 className={styles.title}>Tokens</h6>
-      {!isEmpty(filteredTokens)
-        ? (
-          <div className={tokens && tokens.length > 6 ? classNames('hidden-scroll', styles.scroll) : ''}>
-            {filteredTokens.map((token) => (
-              <div className={styles.box} key={shortid.generate()}>
-                <div className="row justify-content-between" key={shortid.generate()}>
-                  {/* <div className={classNames('col-auto', styles.imgContainer)}>
+      {!isEmpty(filteredTokens) ? (
+        <div
+          className={
+            tokens && tokens.length > 6 ? classNames('hidden-scroll', styles.scroll) : ''
+          }
+        >
+          {filteredTokens.map((token) => (
+            <div className={styles.box} key={shortid.generate()}>
+              <div className="row justify-content-between" key={shortid.generate()}>
+                {/* <div className={classNames('col-auto', styles.imgContainer)}>
                 <img
                   src={
                     tokensObject[token.symbol] ? tokensObject[token.symbol] : defaultImage
@@ -84,30 +86,28 @@ const Token = ({ tokens }) => {
                   alt="img"
                 />
               </div> */}
-                  <div className={classNames('col-auto', styles.name)}>
-                    {/* {token.name.length > 10 ? `${token.name.slice(0, 10)}...` : token.name}( */}
-                    {token.symbol}
-                    {/* ) */}
-                  </div>
+                <div className={classNames('col-auto', styles.name)}>
+                  {/* {token.name.length > 10 ? `${token.name.slice(0, 10)}...` : token.name}( */}
+                  {token.symbol}
+                  {/* ) */}
+                </div>
 
-                  <div className={classNames('col-auto', styles.value)}>
-                    {bigIntToNumber(token.balance)}
-                    {/* &nbsp;
+                <div className={classNames('col-auto', styles.value)}>
+                  {bigIntToNumber(token.balance)}
+                  {/* &nbsp;
                 {token.price
                   ? `$${parseFloat(token.price) * bigIntToNumber(token.balance)}`
                   : ''} */}
-                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className={styles.scroll}>
-            <div className="child-position-center">
-              You have no Tokens
             </div>
-          </div>
-        ) }
+          ))}
+        </div>
+      ) : (
+        <div className={styles.scroll}>
+          <div className="child-position-center">You have no Tokens</div>
+        </div>
+      )}
     </div>
   );
 };

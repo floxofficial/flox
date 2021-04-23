@@ -5,7 +5,6 @@ import load from './load';
 
 export default () => {
   const i = setInterval(() => {
-    console.log('BAM BAM BAM');
     const { wallet } = store.getState();
 
     load(wallet[0], 'already-loaded');
