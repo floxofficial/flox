@@ -10,11 +10,11 @@ const Layout = ({ children, isLoggedIn }) => (
     className={classNames('container-fluid', styles.layout, isLoggedIn && styles.dashboard)}
     id="container"
   >
-    <div id="header">
+    <div id="header" className={styles.header}>
       <Header isLoggedIn={isLoggedIn} />
     </div>
-    <div id="body">{children}</div>
-    <div id="footer">{!isLoggedIn && <Footer />}</div>
+    <div id="body" className={styles.body}>{children}</div>
+    <div id="footer" className={styles.footer}>{!isLoggedIn && <Footer />}</div>
   </div>
 );
 

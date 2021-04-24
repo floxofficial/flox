@@ -24,3 +24,18 @@
 :local(.dashboard) {
   background-color: @Porcelain;
 }
+
+:local(.header), :local(.footer), :local(.body) {
+  width: auto;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+@media (min-width: @ls-large) {
+  :local(.header), :local(.footer), :local(.body) {
+    width: 1036px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
