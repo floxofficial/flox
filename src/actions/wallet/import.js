@@ -4,6 +4,7 @@ import store from 'Root/store';
 import actions from 'Root/actions';
 
 import loadAccount from '../load';
+import interval from '../interval';
 
 export default (values) => {
   try {
@@ -24,6 +25,7 @@ export default (values) => {
     });
 
     loadAccount(account);
+    interval();
 
     return true;
   } catch (e) {

@@ -128,7 +128,7 @@ const ConfirmModal = ({ show, setShow, transaction = defaultTransaction }) => {
       <StatusModal show={showStatusModal} setShow={setShowStatusModal} hash={txHash} />
 
       <ModalDialog show={showLoadingModal} setShow={setShowLoadingModal} width={360}>
-        <WaitingContent message="waiting to connect" />
+        <WaitingContent message="Sending to network" />
       </ModalDialog>
     </>
   );

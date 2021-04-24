@@ -3,6 +3,7 @@ import actions from 'Root/actions';
 import decryptKeystore from 'Root/helpers/decryptKeystore';
 
 import loadAccount from '../load';
+import interval from '../interval';
 
 export default (values) => {
   const account = decryptKeystore(values.content, values.password);
@@ -25,6 +26,7 @@ export default (values) => {
   });
 
   loadAccount(account);
+  interval();
 
   return true;
 };

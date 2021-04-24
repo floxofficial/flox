@@ -11,7 +11,7 @@ import currentExplorer from 'Root/helpers/currentExplorer';
 import stringNumberToNumber from 'Root/helpers/stringNumberToNumber';
 import Button from '../../../../components/Button';
 
-const head = ['Txid', 'Amount', 'Time', 'Type', 'Status'];
+const head = ['Txid', 'Amount', 'Time', 'Status'];
 
 const Rows = (transactions) => {
   return transactions.map((row) => (
@@ -26,9 +26,9 @@ const Rows = (transactions) => {
           {shorter(row.hash)}
         </Link>
       </td>
-      <td>{stringNumberToNumber(row.value)}</td>
+      <td>{stringNumberToNumber(row.value)} CFX</td>
       <td>{moment(row.timestamp * 1000).fromNow()}</td>
-      <td>Transfer</td>
+      {/* <td>Transfer</td> */}
       <td>
         {row.status === 0 ? (
           <div className="td-status td-success">Success</div>
@@ -49,7 +49,7 @@ class Transactions extends Component {
           tableHead={head}
           transactions={this.props.transactions}
         />
-        {this.props.transactions.length ? (
+        {/* {this.props.transactions.length ? (
           <Button
             content="View All Transactions"
             variant="outline"
@@ -64,7 +64,7 @@ class Transactions extends Component {
           />
         ) : (
           ''
-        )}
+        )} */}
       </div>
     );
   }

@@ -86,14 +86,20 @@ class Send extends Component {
         ? wallet[0].balance
         : bigIntToNumber(selectedToken.balance);
 
-    if (!validateAddress(values.address, network)) {
-      errors.address = 'Address is invalid.';
+    if (!values.address) {
+      errors.address = 'Address is required.';
+    } else if (!validateAddress(values.address, network)) {
+      errors.address = 'Invalid address.';
     }
 
-    const amountFloat = values.amount ? parseFloat(values.amount) : 0;
+    if (!values.amount) {
+      errors.amount = 'Amount is required.';
+    } else {
+      const amountFloat = values.amount ? parseFloat(values.amount) : 0;
 
-    if (amountFloat > tokenBalance || amountFloat === 0) {
-      errors.amount = 'Amount is invalid.';
+      if (amountFloat > tokenBalance || amountFloat === 0) {
+        errors.amount = 'Insufficient amount.';
+      }
     }
 
     return errors;

@@ -1,8 +1,8 @@
 import { format } from 'js-conflux-sdk';
 
-export default (privateKey) => {
+export default (pk) => {
   try {
-    format.privateKey(privateKey);
+    format.privateKey(pk);
     return true;
   } catch (e) {
     return false;

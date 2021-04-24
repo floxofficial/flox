@@ -6,11 +6,13 @@ import getListTokens from 'Root/helpers/dashboard/getListTokens';
 import getTransactions from 'Root/helpers/dashboard/getTransactions';
 import getCurrentBalance from 'Root/helpers/dashboard/getCurrentBalance';
 
-export default (account) =>
+export default (account, isAlreadyLoaded) =>
   new Promise((resolve) => {
-    store.dispatch({
-      type: types.account.UNLOADED,
-    });
+    if (!isAlreadyLoaded) {
+      store.dispatch({
+        type: types.account.UNLOADED,
+      });
+    }
 
     const currentBalance = getCurrentBalance(account);
     const transactions = getTransactions(account);
@@ -25,8 +27,10 @@ export default (account) =>
       // USDPrices,
       // CFXPrice
     ]).then(() => {
-      store.dispatch({
-        type: types.account.LOADED,
-      });
+      if (!isAlreadyLoaded) {
+        store.dispatch({
+          type: types.account.LOADED,
+        });
+      }
     });
   });
