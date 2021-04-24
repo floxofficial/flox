@@ -6,7 +6,7 @@ import styles from './styles.less';
 const Loading = ({ size = 128, isFull }) => (
   <div className={classNames(styles.container, isFull && styles.position)}>
     <div style={{ width: `${size}px`, height: `${size}px` }}>
-      <LogoMotion />
+      <LogoMotion main={isFull} />
     </div>
   </div>
 );

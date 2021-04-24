@@ -1,10 +1,11 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import watchAnimationData from '../../assets/json/Flox - logo motion - 128x128.json';
+import animationData from '../../assets/json/Flox - logo motion - 128x128.json';
+import mainAnimationData from '../../assets/json/Flox - logo motion - 256x256.json';
 
-const LogoMotion = () => (
+const LogoMotion = ({ main }) => (
   <div>
-    <Lottie animationData={watchAnimationData} />
+    <Lottie animationData={main ? mainAnimationData : animationData} />
   </div>
 );
 
