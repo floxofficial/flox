@@ -29,7 +29,7 @@ const Header = ({ isLoggedIn, ...props }) => {
       <div className="row justify-content-between align-items-center">
         <div className="col-auto">
           <Link to={homePage}>
-            <img src={logo} alt="Fullet" className={styles.logo} />
+            <img src={logo} alt="Flox" className={styles.logo} />
           </Link>
         </div>
         <div className="col-auto d-flex align-items-center">
