@@ -1,3 +1,5 @@
+![](https://i.imgur.com/JT8EJqJ.png)
+
 # Flox
 
 Flox is an open-source desktop wallet that allows you to manage your assets on the Conflux network.
