@@ -1,10 +1,8 @@
 {
   "arch": "amd64",
-  "name": "Fullet",
+  "name": "Flox",
   "dest": "./dist/installers/",
-  "src": "./dist/Fullet-linux-x64",
+  "src": "./dist/Flox-linux-x64",
   "icon": "./src/images/icons/256x256.png",
-  "categories": [
-    "Utility"
-  ]
+  "categories": ["Utility"]
 }

@@ -43,8 +43,8 @@ function createWindow() {
     height: 830,
     minWidth: 600,
     minHeight: 600,
-    title: 'Fullet',
-    // icon: join(__dirname, 'src/images/icons/256x256.png'),
+    title: 'Flox',
+    icon: join(__dirname, 'src/assets/logo/Flox-icon-256.png'),
   });
 
   win.loadURL(`file://${resolve(__dirname, 'index.html#/initializing')}`);
