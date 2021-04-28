@@ -1,20 +1,33 @@
+![](https://i.imgur.com/JT8EJqJ.png)
+
 # Flox
 
 Flox is an open-source desktop wallet that allows you to manage your assets on the Conflux network.
 
 ## Features
 
-[x] For Mac OS, Windows, Linux platforms
-[x] Enjoyable user experience
-[x] Beautiful user interface
-[x] Create a wallet
-[x] Unlock wallet with the private key
-[x] Unlock wallet with Keystore file
-[x] Send CFX
-[x] Send tokens  
-[x] QR for address
-[x] Show last Transactions Show wallet info
-[x] Show CFX balance Show tokens balance
+- For Mac OS, Windows, Linux platforms
+
+- Enjoyable user experience
+
+- Beautiful user interface
+
+- Create a wallet
+
+- Unlock wallet with the private key
+
+- Unlock wallet with Keystore file
+
+- Send CFX
+
+- Send tokens  
+
+- QR for address
+
+- Show last Transactions Show wallet info
+
+- Show CFX balance Show tokens balance
+
 
 ### Safe
 
