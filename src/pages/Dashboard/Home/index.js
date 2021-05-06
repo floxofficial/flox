@@ -52,10 +52,7 @@ const Dashboard = (props) => {
               </Tab>
               <Tab eventKey="wallet" title="Wallet info">
                 <div className="mt-5 pt-2">
-                  <PrivateInfo
-                    privateKey={activeAccount.privateKey}
-                    address={activeAccount.address}
-                  />
+                  <PrivateInfo activeAccount={activeAccount} />
                 </div>
               </Tab>
             </Tabs>

@@ -12,7 +12,7 @@ export default async (account) => {
       }&limit=10&skip=0`,
     ).then((res) => res.json());
 
-    console.log(transactions);
+    // console.log(transactions);
 
     store.dispatch({
       type: types.transactions.LOAD,

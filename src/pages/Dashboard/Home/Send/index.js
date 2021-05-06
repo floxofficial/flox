@@ -281,12 +281,7 @@ class Send extends Component {
                     fontWeight={500}
                     className="mt-4-5"
                     disabled={submitting}
-                    onClick={() => {
-                      console.log(form);
-                      console.log(form.getState());
-                      console.log(form.getFieldState());
-                      console.log(form.getRegisteredFields());
-                    }}
+                    onClick={() => {}}
                   />
                 </div>
               </form>

@@ -11,6 +11,7 @@ export default {
     LOADED: 'account/LOADED',
     UNLOADED: 'account/UNLOADED',
     CHANGE_BALANCE: 'account/CHANGE_BALANCE',
+    CHANGE_STAKING_BALANCE: 'account/CHANGE_STAKING_BALANCE',
   },
   options: {
     CHANGE: 'options/CHANGE',

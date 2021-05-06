@@ -4,7 +4,6 @@ import store from 'Root/store';
 import erc20abi from 'Root/static/erc20-abi.json';
 
 export default async (transaction) => {
-  console.log(transaction);
   const { options, wallet } = store.getState();
   const account = wallet[0];
 

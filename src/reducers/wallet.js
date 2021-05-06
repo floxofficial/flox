@@ -21,6 +21,17 @@ export default (state = [], action) => {
       ];
     }
 
+    case actions.account.CHANGE_STAKING_BALANCE: {
+      const activeAccount = state.find((x) => x.active);
+
+      return [
+        {
+          ...activeAccount,
+          stakingBalance: action.balance,
+        },
+      ];
+    }
+
     case actions.account.LOADED: {
       const activeAccount = state.find((x) => x.active);
 
