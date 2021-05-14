@@ -72,7 +72,7 @@ const Input = ({
 
   return (
     <>
-      <div className={classNames(styles.group, isError && styles.inputError)} aria-disabled={disabled}>
+      <div className={classNames(styles.group, isError && styles.inputError, 'input-box')} aria-disabled={disabled}>
         <input
           type={visibleType}
           className="input"
