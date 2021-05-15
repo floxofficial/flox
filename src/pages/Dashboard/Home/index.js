@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Tab, Tabs } from 'react-bootstrap';
 
-import loadDashboard from 'Root/actions/load';
+
 import PrivateInfo from 'Root/Block/PrivateInfo';
 
 import Loading from 'Root/components/Loading';
@@ -11,17 +11,8 @@ import Send from './Send';
 import Token from './Token';
 import Balance from './Balance';
 import Transactions from './Transactions';
+import Stake from './Stake';
 import styles from './styles.less';
-
-const tokens = [
-  { name: 'FCI', value: '2.34' },
-  { name: 'LOO', value: '0.01992' },
-  { name: 'SMO', value: '0.003622' },
-  { name: 'FCI', value: '2.34' },
-  { name: 'LOO', value: '0.01992' },
-  { name: 'SMO', value: '0.003622' },
-  { name: 'SMO', value: '0.003622' },
-];
 
 const Dashboard = (props) => {
   const { wallet } = props;
@@ -48,6 +39,11 @@ const Dashboard = (props) => {
               <Tab eventKey="transactions" title="Transactions">
                 <div style={{ marginTop: '24px' }}>
                   <Transactions account={activeAccount} />
+                </div>
+              </Tab>
+              <Tab eventKey="stakes" title="Stakes">
+                <div style={{ marginTop: '24px' }}>
+                  <Stake />
                 </div>
               </Tab>
               <Tab eventKey="wallet" title="Wallet info">
