@@ -2,18 +2,23 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.less';
 
-const RadioButton = ({ radioGroups, defaultValue }) => {
+const RadioButton = ({ radioGroups, defaultValue, setRadio }) => {
   const [value, setValue] = useState('');
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.warn(event.target.value);
   };
 
   useEffect(() => {
     if (defaultValue) {
       setValue(defaultValue);
+      setRadio(defaultValue);
     }
   }, []);
+
+  useEffect(() => {
+    setRadio(value);
+  }, [value]);
+
   return (
     <div className={styles.container}>
       {radioGroups.map((radio, index) => (
