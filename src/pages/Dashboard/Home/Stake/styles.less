@@ -1,0 +1,66 @@
+@import '~Root/styles/var';
+
+:local(.balance) {
+  background: @Porcelain;
+  padding: 12px 11px 10px 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+  min-width: 180px;
+}
+
+:local(.balance-title) {
+  font-size: 14px;
+  color: @Waterloo;
+
+  span {
+    color: @Keppel;
+    font-size: 12px;
+    margin-left: 2px;
+  }
+}
+
+:local(.balance-value) {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: @Shark;
+
+  span {
+    color: @MineShaft;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 2px;
+  }
+}
+
+:local(.title) {
+  font-size: 18px;
+  font-weight: 600;
+  color: @Shark;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+:local(.label) {
+  width: 100px;
+  height: 44px;
+  border-radius: 4px;
+  border: 1px solid @Mercury;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-top: -1px;
+  font-size: 16px;
+  font-weight: 500;
+  color: @Shark;
+}
+
+:local(.form) {
+  .input-box {
+    width: 100%;
+    margin-right: 16px;
+  }
+}
