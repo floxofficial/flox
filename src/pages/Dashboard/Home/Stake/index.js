@@ -64,6 +64,9 @@ const Stake = () => {
                   </Field>
                   <div className={styles.label}>CFX</div>
                 </div>
+                <p className={styles.msg}>
+                  Staked interest will be automatically withdrawn to your wallet address every time you unstake.
+                </p>
               </form>
             )}
           />
@@ -75,7 +78,7 @@ const Stake = () => {
         variant="primary"
         size="108px"
         fontWeight={500}
-        className="mt-3"
+        className="mt-4-5"
       />
     </>
   );
