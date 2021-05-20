@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import CopyText from 'Root/components/CopyText';
-import stakeAction from 'Root/helpers/dashboard/stake';
+// import stakeAction from 'Root/helpers/dashboard/stake';
 
 import styles from './styles.less';
 
-const PrivateInfo = ({ activeAccount }) => {
-  const [stakeInput, setStakeInput] = useState();
-  const [error, setError] = useState();
+const PrivateInfo = ({ wallet }) => {
+  // const handleStake = async (type) => {
+  //   stakeAction(activeAccount, parseFloat(stakeInput), type);
+  // };
 
-  const handleStake = async (type) => {
-    stakeAction(activeAccount, parseFloat(stakeInput), type);
-  };
+  const activeAccount = wallet[0];
 
   return (
     <>
@@ -26,7 +26,7 @@ const PrivateInfo = ({ activeAccount }) => {
         <CopyText text={activeAccount.privateKey} icon />
       </p>
 
-      <h6 className={styles.label}>Staking balance</h6>
+      {/* <h6 className={styles.label}>Staking balance</h6>
       <p className={styles.info}>{activeAccount.stakingBalance}</p>
 
       <input
@@ -57,9 +57,11 @@ const PrivateInfo = ({ activeAccount }) => {
       >
         Withdraw
       </button>
-      <p>{error}</p>
+      <p>{error}</p> */}
     </>
   );
 };
 
-export default PrivateInfo;
+export default connect((store) => ({
+  wallet: store.wallet,
+}))(PrivateInfo);

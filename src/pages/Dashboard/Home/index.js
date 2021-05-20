@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Tab, Tabs } from 'react-bootstrap';
 
-
 import PrivateInfo from 'Root/Block/PrivateInfo';
 
 import Loading from 'Root/components/Loading';
@@ -13,7 +12,6 @@ import Balance from './Balance';
 import Transactions from './Transactions';
 import Stake from './Stake';
 import styles from './styles.less';
-
 
 const Dashboard = (props) => {
   const { wallet } = props;
@@ -39,7 +37,7 @@ const Dashboard = (props) => {
                   <Transactions account={activeAccount} />
                 </div>
               </Tab>
-              <Tab eventKey="stakes" title="Stakes">
+              <Tab eventKey="stakes" title="Stake">
                 <div style={{ marginTop: '24px' }}>
                   <Stake />
                 </div>

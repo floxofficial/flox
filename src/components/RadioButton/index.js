@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import shortid from 'shortid';
 import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+
 import styles from './styles.less';
 
-const RadioButton = ({ radioGroups, defaultValue }) => {
+const RadioButton = ({ radioGroups, defaultValue, onChange }) => {
   const [value, setValue] = useState('');
   const handleChange = (event) => {
     setValue(event.target.value);
     console.warn(event.target.value);
+    onChange(value);
   };
 
   useEffect(() => {
@@ -16,8 +19,15 @@ const RadioButton = ({ radioGroups, defaultValue }) => {
   }, []);
   return (
     <div className={styles.container}>
-      {radioGroups.map((radio, index) => (
-        <div key={index} className={styles.checkbox} onClick={() => setValue(radio.value)}>
+      {radioGroups.map((radio) => (
+        <div
+          key={shortid.generate()}
+          className={styles.checkbox}
+          onClick={() => {
+            setValue(radio.value);
+            onChange(radio.value);
+          }}
+        >
           <input
             type="radio"
             value={radio.value}

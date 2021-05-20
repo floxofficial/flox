@@ -32,18 +32,14 @@ export default async (activeAccount, amount, type) => {
       .withdraw(BigInt(parseFloat(amount) * 1000000000000000000))
       .sendTransaction({
         from: account,
-      })
-      .confirmed();
+      });
   } else {
     tx = await staking
       .deposit(BigInt(parseFloat(amount) * 1000000000000000000))
       .sendTransaction({
         from: account,
-      })
-      .confirmed();
+      });
   }
 
-  console.log(tx);
-
-  return true;
+  return tx;
 };
