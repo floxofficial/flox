@@ -41,7 +41,7 @@ const Stake = ({ wallet }) => {
     return errors;
   };
 
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     // setButtonDisabled(true);
     const tx = await stakeAction(activeAccount, parseFloat(values.amount), method);
     console.log(tx);
@@ -86,10 +86,21 @@ const Stake = ({ wallet }) => {
       <div className="row" style={{ marginTop: '40px' }}>
         <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12 col-12">
           <Form
-            onSubmit={(values) => handleSubmit(values)}
+            onSubmit={(values) => onSubmit(values)}
             validate={(values) => validateForm(values)}
-            render={({ handleSubmit, form, pristine }) => (
-              <form onSubmit={handleSubmit} className={styles.form}>
+            render={({
+              handleSubmit, form, pristine,
+            }) => (
+              <form
+                onSubmit={(event) => {
+                  handleSubmit(event).then(
+                    () => {
+                      form.reset();
+                    },
+                  );
+                }}
+                className={styles.form}
+              >
                 <label className="label-primary">Amount</label>
                 <div className="d-flex">
                   <div className="d-flex flex-column w-100 mr-3">
