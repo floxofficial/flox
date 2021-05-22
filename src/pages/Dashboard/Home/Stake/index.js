@@ -33,11 +33,9 @@ const Stake = ({ wallet }) => {
       } else if (parseFloat(values.amount) < 1) {
         errors.amount = 'Amount should be at least 1.';
       }
-    } else {
-      if (parseFloat(values.amount) > parseFloat(activeAccount.stakingBalance)) {
-        /* disable-eslint-inline */
-        errors.amount = 'Insufficient staking balance.';
-      }
+    } else if (parseFloat(values.amount) > parseFloat(activeAccount.stakingBalance)) {
+      /* disable-eslint-inline */
+      errors.amount = 'Insufficient staking balance.';
     }
 
     return errors;
@@ -93,12 +91,14 @@ const Stake = ({ wallet }) => {
             render={({ handleSubmit, form, pristine }) => (
               <form onSubmit={handleSubmit} className={styles.form}>
                 <label className="label-primary">Amount</label>
-                <div className="d-flex align-items-center">
-                  <Field name="amount">
-                    {({ input, meta }) => (
-                      <Input type="number" placeholder="1" input={input} meta={meta} />
-                    )}
-                  </Field>
+                <div className="d-flex">
+                  <div className="d-flex flex-column w-100 mr-3">
+                    <Field name="amount">
+                      {({ input, meta }) => (
+                        <Input type="number" placeholder="1" input={input} meta={meta} />
+                      )}
+                    </Field>
+                  </div>
                   <div className={styles.label}>CFX</div>
                 </div>
                 <Button
