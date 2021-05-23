@@ -6,6 +6,9 @@ import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import RadioButton from 'Root/components/RadioButton';
 import stakeAction from 'Root/helpers/dashboard/stake';
+import StatusModal from 'Root/Block/ModalContent/StatusModal';
+import WaitingModal from 'Root/Block/ModalContent/WaitingModal';
+import ModalDialog from 'Root/components/ModalDialog';
 
 import styles from './styles.less';
 
@@ -16,6 +19,9 @@ const radioGroups = [
 
 const Stake = ({ wallet }) => {
   const [method, setMethod] = useState('deposit');
+  const [showStatusModal, setShowStatusModal] = useState(false);
+  const [showLoadingModal, setShowLoadingModal] = useState(false);
+  const [txHash, setTxHash] = useState('');
   // const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const activeAccount = wallet[0];
@@ -42,9 +48,12 @@ const Stake = ({ wallet }) => {
   };
 
   const onSubmit = async (values) => {
+    setShowLoadingModal(true);
     // setButtonDisabled(true);
     const tx = await stakeAction(activeAccount, parseFloat(values.amount), method);
-    console.log(tx);
+    setTxHash(tx);
+    setShowLoadingModal(false);
+    setShowStatusModal(true);
     // setButtonDisabled(false);
   };
 
@@ -88,16 +97,12 @@ const Stake = ({ wallet }) => {
           <Form
             onSubmit={(values) => onSubmit(values)}
             validate={(values) => validateForm(values)}
-            render={({
-              handleSubmit, form, pristine,
-            }) => (
+            render={({ handleSubmit, form, pristine }) => (
               <form
                 onSubmit={(event) => {
-                  handleSubmit(event).then(
-                    () => {
-                      form.reset();
-                    },
-                  );
+                  handleSubmit(event).then(() => {
+                    form.reset();
+                  });
                 }}
                 className={styles.form}
               >
@@ -126,6 +131,12 @@ const Stake = ({ wallet }) => {
           />
         </div>
       </div>
+
+      <StatusModal show={showStatusModal} setShow={setShowStatusModal} hash={txHash} />
+
+      <ModalDialog show={showLoadingModal} setShow={setShowLoadingModal} width={360}>
+        <WaitingModal message="Sending to network" />
+      </ModalDialog>
     </>
   );
 };
