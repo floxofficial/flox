@@ -13,8 +13,8 @@ import ModalDialog from 'Root/components/ModalDialog';
 import styles from './styles.less';
 
 const radioGroups = [
-  { value: 'deposit', label: 'Deposit' },
-  { value: 'withdraw', label: 'Withdraw' },
+  { value: 'deposit', label: 'Stake' },
+  { value: 'withdraw', label: 'Unstake' },
 ];
 
 const Stake = ({ wallet }) => {
@@ -119,7 +119,7 @@ const Stake = ({ wallet }) => {
                 </div>
                 <Button
                   type="submit"
-                  content="Submit"
+                  content={method === 'deposit' ? 'Stake' : 'Unstake'}
                   variant="primary"
                   size="108px"
                   fontWeight={500}

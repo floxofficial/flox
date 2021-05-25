@@ -142,7 +142,14 @@ class Send extends Component {
             onSubmit={(values) => this.onSubmit(values)}
             validate={(values) => this.validateForm(values)}
             render={({ submitError, handleSubmit, submitting, form, values }) => (
-              <form className={styles.form} onSubmit={handleSubmit}>
+              <form
+                className={styles.form}
+                onSubmit={(event) => {
+                  handleSubmit(event).then(() => {
+                    form.reset();
+                  });
+                }}
+              >
                 <div className="form-group">
                   <label className="label-primary">To Address</label>
                   <Field name="address">
