@@ -86,14 +86,18 @@ class Send extends Component {
         ? wallet[0].balance
         : bigIntToNumber(selectedToken.balance);
 
-    if (!values.address) {
-      errors.address = 'Address is required.';
-    } else if (!validateAddress(values.address, network)) {
+    // if (!values.address) {
+    //   errors.address = 'Address is required.';
+    // } else if (!validateAddress(values.address, network)) {
+    //   errors.address = 'Invalid address.';
+    // }
+
+    if (values.address && !validateAddress(values.address, network)) {
       errors.address = 'Invalid address.';
     }
 
     if (!values.amount) {
-      errors.amount = 'Amount is required.';
+      // errors.amount = 'Amount is required.';
     } else {
       const amountFloat = values.amount ? parseFloat(values.amount) : 0;
 
@@ -287,7 +291,7 @@ class Send extends Component {
                     size="104px"
                     fontWeight={500}
                     className="mt-4-5"
-                    disabled={submitting}
+                    disabled={!(values.amount && values.address) || submitting}
                     onClick={() => {}}
                   />
                 </div>

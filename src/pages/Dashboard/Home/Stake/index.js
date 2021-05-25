@@ -29,9 +29,9 @@ const Stake = ({ wallet }) => {
   const validateForm = async (values) => {
     const errors = {};
 
-    if (!values.amount) {
-      errors.amount = 'Required.';
-    }
+    // if (!values.amount) {
+    //   errors.amount = 'Required.';
+    // }
 
     if (method === 'deposit') {
       if (parseFloat(values.amount) > parseFloat(activeAccount.balance)) {
