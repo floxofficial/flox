@@ -1,8 +1,8 @@
 {
   "arch": "amd64",
-  "name": "flox",
+  "name": "Flox",
   "dest": "./dist/installers/",
-  "src": "./dist/flox-linux-x64",
+  "src": "./dist/Flox-linux-x64",
   "icon": "./src/assets/logo/Flox-icon-256.png",
   "categories": ["Utility"]
 }
