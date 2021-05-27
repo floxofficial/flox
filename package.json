@@ -1,35 +1,28 @@
 {
-  "name": "Flox",
-  "version": "0.0.1",
+  "name": "flox",
+  "version": "0.0.2",
   "description": "Flox",
   "main": "build/electron.js",
   "scripts": {
     "start": "electron .",
     "predeploy": "npm run prod",
-    "preinstall": "npx npm-force-resolutions",
-    "deploy": "./node_modules/.bin/gh-pages -d build",
-    "dev": "cross-env NODE_ENV=development gulp dev",
-    "prod": "cross-env NODE_ENV=production ./node_modules/.bin/gulp prod",
+    "dev": "cross-env NODE_ENV=development gulp build",
+    "prod": "cross-env NODE_ENV=production gulp build",
     "package:macos": "./node_modules/.bin/electron-packager ./ Flox --platform=darwin --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.icns --out=dist --overwrite",
     "package:linux": "./node_modules/.bin/electron-packager ./ Flox --platform=linux --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.png --out=dist --overwrite",
-    "package:windows": "./node_modules/.bin/electron-packager ./ Flox --platform=win32 --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.ico --out=dist --overwrite",
+    "package:windows": "electron-packager . Flox --platform=win32 --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.ico --out=dist --overwrite",
     "build:dmg": "./node_modules/.bin/electron-installer-dmg ./dist/Flox-darwin-x64/flox.app Flox --icon=./src/assets/logo/Flox-icon-256.icns --out=./dist/installers/ --title=flox --overwrite",
     "build:deb": "./node_modules/.bin/electron-installer-debian --arch amd64 --config ./packager/deb.json",
     "build:rpm": "./node_modules/.bin/electron-installer-redhat --src ./dist/Flox-linux-x64 --arch x86_64 --config ./packager/rpm.json",
     "build:flatpak": "./node_modules/.bin/electron-installer-flatpak --src ./dist/Flox-linux-x64 --arch x86_64 --config ./packager/flatpak.json",
     "build:snap": "./node_modules/.bin/electron-installer-snap --src=./dist/Flox-linux-x64 --name Flox --dest=./dist/installer",
-    "build:windows": "node packager/win.js",
-    "release:dmg": "npm run package:macos; npm run build:dmg",
-    "release:deb": "npm run package:linux; npm run build:deb",
-    "release:rpm": "npm run package:linux; npm run build:rpm",
-    "release:flatpak": "npm run package:linux; npm run build:flatpak",
-    "release:snap": "npm run package:linux; npm run build:snap",
-    "release:windows": "npm run package:windows; npm run build:windows"
+    "build:windows": "node packager/win.js"
   },
   "keywords": [],
   "author": "Matin Kaboli <matinkaboli79@gmail.com>",
   "license": "CC0-1.0",
   "dependencies": {
+    "@babel/core": "^7.1.6",
     "@babel/runtime": "^7.3.1",
     "aes256": "^1.1.0",
     "bootstrap": "^4.5.3",
@@ -68,7 +61,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.1.6",
@@ -81,26 +73,13 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "del": "^3.0.0",
-    "electron-installer-dmg": "^2.0.0",
-    "electron-installer-snap": "^3.1.1",
-    "electron-packager": "^13.0.1",
     "electron-winstaller": "^5.0.0",
-    "eslint": "^5.12.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.3",
     "file-loader": "^2.0.0",
-    "gh-pages": "^2.0.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-cli": "^2.0.1",
-    "gulp-eslint": "^5.0.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2"
-  },
-  "resolutions": {
-    "graceful-fs": "^4.2.4"
   }
 }

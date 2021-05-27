@@ -6,18 +6,19 @@ import currentExplorer from 'Root/helpers/currentExplorer';
 
 export default async (account) => {
   try {
+    console.log(account.address);
     const transactions = await fetch(
       `${currentExplorer()}/v1/transaction?accountAddress=${
         account.address
       }&limit=10&skip=0`,
     ).then((res) => res.json());
 
-    // console.log(transactions);
-
-    store.dispatch({
-      type: types.transactions.LOAD,
-      payload: transactions.list,
-    });
+    if (transactions.list < 10000000) {
+      store.dispatch({
+        type: types.transactions.LOAD,
+        payload: transactions.list,
+      });
+    }
 
     return true;
   } catch (e) {
