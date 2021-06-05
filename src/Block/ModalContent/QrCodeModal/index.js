@@ -1,9 +1,12 @@
 import React from 'react';
+import QR from 'qrcode.react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import QR from 'qrcode.react';
-import ModalDialog from 'Root/components/ModalDialog';
+
+import shorter from 'Root/helpers/shorter';
 import CopyText from 'Root/components/CopyText';
+import ModalDialog from 'Root/components/ModalDialog';
+
 import styles from './styles.less';
 
 const QrCodeModal = ({ show, setShow, address }) => (
@@ -22,7 +25,7 @@ const QrCodeModal = ({ show, setShow, address }) => (
       <CopyText
         text={address}
         content={
-          <span className={classNames(styles.box, styles['address-box'])}>{address}</span>
+          <span className={classNames(styles.box, styles['address-box'])}>{shorter(address, 17)}</span>
         }
       />
     </div>

@@ -8,9 +8,7 @@ export default async (transaction) => {
   const account = wallet[0];
 
   const url =
-    options.network === 'mainnet'
-      ? 'http://main.confluxrpc.org/v2'
-      : 'http://test.confluxrpc.org/v2';
+    options.network === 'mainnet' ? 'http://main.confluxrpc.org/v2' : 'http://test.confluxrpc.org/v2';
 
   const networkId = options.network === 'mainnet' ? CONST.MAINNET_ID : CONST.TESTNET_ID;
 
@@ -50,10 +48,7 @@ export default async (transaction) => {
   });
 
   const hash = await contract
-    .transfer(
-      transaction.to,
-      BigInt(parseFloat(transaction.amount) * 1000000000000000000),
-    )
+    .transfer(transaction.to, BigInt(parseFloat(transaction.amount) * 1000000000000000000))
     .sendTransaction({ from: account.address });
 
   return hash;

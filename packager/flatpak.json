@@ -3,6 +3,6 @@
   "name": "Flox",
   "dest": "./dist/installers/",
   "src": "./dist/Flox-linux-x64",
-  "icon": "./src/images/icons/256x256.png",
+  "icon": "./src/assets/logo/Flox-icon-256.png",
   "categories": ["Utility"]
 }

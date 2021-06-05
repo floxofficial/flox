@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Collapse } from 'react-bootstrap';
 import { Field, Form } from 'react-final-form';
 
+import config from 'Root/config';
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
 import Checkbox from 'Root/components/Checkbox';
@@ -68,7 +69,7 @@ class Send extends Component {
       from: wallet[0].address,
       token: selectedValue.value,
       gasPrice: parseFloat(values.gasPrice) || 1,
-      gasLimit: parseFloat(values.gasLimit) || 55000,
+      gasLimit: parseFloat(values.gasLimit) || config.GAS_LIMIT,
     };
 
     this.onShowModal(true, transaction);
@@ -82,9 +83,7 @@ class Send extends Component {
     const { selectedValue } = this.state;
     const selectedToken = tokens.find((x) => x.symbol === selectedValue.value);
     const tokenBalance =
-      selectedValue.value === 'CFX'
-        ? wallet[0].balance
-        : bigIntToNumber(selectedToken.balance);
+      selectedValue.value === 'CFX' ? wallet[0].balance : bigIntToNumber(selectedToken.balance);
 
     // if (!values.address) {
     //   errors.address = 'Address is required.';
@@ -134,9 +133,7 @@ class Send extends Component {
                 if (selectedValue.value === 'CFX') {
                   maxBalance = wallet[0].balance;
                 } else {
-                  const { balance } = tokens.find(
-                    (x) => x.symbol === selectedValue.value,
-                  );
+                  const { balance } = tokens.find((x) => x.symbol === selectedValue.value);
                   maxBalance = bigIntToNumber(balance);
                 }
 
@@ -209,8 +206,7 @@ class Send extends Component {
                   </div>
                   <div className="col-auto">
                     <p className={styles['fee-value']}>
-                      {(parseFloat(values.gasPrice) || 1) *
-                        (parseFloat(values.gasLimit) || 55000)}
+                      {(parseFloat(values.gasPrice) || 1) * (parseFloat(values.gasLimit) || config.GAS_LIMIT)}
                       <span> drip</span>
                     </p>
                   </div>
@@ -270,7 +266,7 @@ class Send extends Component {
                           {({ input, meta }) => (
                             <Input
                               type="number"
-                              placeholder="55000"
+                              placeholder={config.GAS_LIMIT}
                               input={input}
                               meta={meta}
                               disabled={this.state.checked}

@@ -8,7 +8,7 @@ const RadioButton = ({ radioGroups, defaultValue, onChange }) => {
   const [value, setValue] = useState('');
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.warn(event.target.value);
+    // console.warn(event.target.value);
     onChange(value);
   };
 
@@ -28,12 +28,7 @@ const RadioButton = ({ radioGroups, defaultValue, onChange }) => {
             onChange(radio.value);
           }}
         >
-          <input
-            type="radio"
-            value={radio.value}
-            checked={value === radio.value}
-            onChange={handleChange}
-          />
+          <input type="radio" value={radio.value} checked={value === radio.value} onChange={handleChange} />
           <label>{radio.label}</label>
         </div>
       ))}
