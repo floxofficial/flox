@@ -11,6 +11,7 @@ import Token from './Token';
 import Balance from './Balance';
 import Transactions from './Transactions';
 import Stake from './Stake';
+import WalletPrivateInfo from "./WalletPrivateInfo";
 import styles from './styles.less';
 
 const Dashboard = (props) => {
@@ -44,7 +45,8 @@ const Dashboard = (props) => {
               </Tab>
               <Tab eventKey="wallet" title="Wallet info">
                 <div className="mt-5 pt-2">
-                  <PrivateInfo activeAccount={activeAccount} />
+                  {/*<PrivateInfo activeAccount={activeAccount} />*/}
+                  <WalletPrivateInfo activeAccount={activeAccount}/>
                 </div>
               </Tab>
             </Tabs>

@@ -9,6 +9,7 @@ import Button from 'Root/components/Button';
 import PrivateInfo from 'Root/Block/PrivateInfo';
 import keystoreMaker from 'Root/helpers/keystore';
 import { dashboardPage } from 'Root/static/routes';
+import ExportFile from 'Root/components/ExportFile';
 
 import styles from './styles.less';
 
@@ -44,17 +45,15 @@ const WalletInfo = (props) => {
             address={activeAccount.address}
           />
         </div>
-        <a
-          className={styles.download}
-          onClick={() => {
+        <ExportFile
+            text="Download Keystore file"
+            width={239}
+            onClick={() => {
             dialog.showSaveDialog(currentWindow, options, (filename) => {
               fs.writeFileSync(filename, keystore, 'utf-8');
             });
-          }}
-        >
-          <div className={styles['download-text']}>Download Keystore file</div>
-          <div className="icon-upload" />
-        </a>
+            }}
+        />
         <Button
           variant="primary"
           content="Continue"
