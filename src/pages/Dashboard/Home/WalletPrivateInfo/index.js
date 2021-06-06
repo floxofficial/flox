@@ -24,16 +24,6 @@ class WalletPrivateInfo extends Component {
         this.setState({checked: true});
     }
 
-    validateForm(values) {
-        const errors = {};
-
-        if (values.password && values.password.length < 8) {
-            errors.password = 'Password must be 8 or more characters.';
-        }
-
-        return errors;
-    }
-
     render() {
         const keystore = keystoreMaker(this.props.activeAccount, 'this.props.password');
 
@@ -43,7 +33,11 @@ class WalletPrivateInfo extends Component {
             <div className="row">
                 <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12 col-12">
                     <div className={styles.msg}><img src={warning} alt="icon"/>
-                        To see backup information (private key), please enter the password
+                        {this.state.checked ?
+                            'Do not lose your private key! There is no way to recover lost keys.' :
+                            'To see backup information (private key), please enter the password'
+                        }
+
                     </div>
                     {this.state.checked ?
                         <div className={styles.container}>
@@ -62,7 +56,6 @@ class WalletPrivateInfo extends Component {
                         </div> :
                         <Form
                             onSubmit={(values) => this.onSubmit(values)}
-                            validate={(values) => this.validateForm(values)}
                             render={({submitError, handleSubmit, invalid, pristine, submitting}) => (
                                 <form className={styles.container} onSubmit={handleSubmit}>
                                     <label className="label-primary">Password</label>
