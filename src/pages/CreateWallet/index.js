@@ -11,18 +11,18 @@ import styles from './styles.less';
 
 class CreateWallet extends Component {
   onSubmit(values) {
-    createWalletAction(values, this.props.history.push);
-  }
-
-  validateForm(values) {
     const errors = {};
 
     if (values.password && values.password.length < 8) {
       errors.password = 'Password must be 8 or more characters.';
+
+      return errors;
     }
 
-    return errors;
+    createWalletAction(values, this.props.history.push);
   }
+
+  validateForm(values) {}
 
   render() {
     return (
@@ -54,7 +54,7 @@ class CreateWallet extends Component {
                   size="100%"
                   fontWeight={500}
                   className="mt-4"
-                  disabled={invalid || pristine}
+                  disabled={pristine}
                 />
               </form>
             )}

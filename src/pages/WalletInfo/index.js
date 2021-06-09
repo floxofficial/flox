@@ -46,13 +46,13 @@ const WalletInfo = (props) => {
           />
         </div>
         <ExportFile
-            text="Download Keystore file"
-            width={239}
-            onClick={() => {
+          text="Download Keystore file"
+          width={239}
+          onClick={() => {
             dialog.showSaveDialog(currentWindow, options, (filename) => {
               fs.writeFileSync(filename, keystore, 'utf-8');
             });
-            }}
+          }}
         />
         <Button
           variant="primary"

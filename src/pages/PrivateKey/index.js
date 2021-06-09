@@ -14,6 +14,14 @@ import styles from './styles.less';
 
 class PrivateKey extends Component {
   onSubmit(values) {
+    const errors = {};
+
+    if (!validatePrivateKey(fixPrivateKey(values.privateKey))) {
+      errors.privateKey = 'Invalid privateKey';
+
+      return errors;
+    }
+
     const newValues = {
       ...values,
       privateKey: fixPrivateKey(values.privateKey),
@@ -30,15 +38,7 @@ class PrivateKey extends Component {
     };
   }
 
-  validateForm(values) {
-    const errors = {};
-
-    if (!validatePrivateKey(fixPrivateKey(values.privateKey))) {
-      errors.privateKey = 'Invalid privateKey';
-    }
-
-    return errors;
-  }
+  validateForm(values) {}
 
   render() {
     return (
@@ -48,7 +48,7 @@ class PrivateKey extends Component {
           <Form
             onSubmit={(values) => this.onSubmit(values)}
             validate={(values) => this.validateForm(values)}
-            render={({ submitError, handleSubmit, invalid }) => (
+            render={({ submitError, handleSubmit, invalid, pristine }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <label className="label-primary">PrivateKey</label>
 
@@ -73,7 +73,7 @@ class PrivateKey extends Component {
                   size="100%"
                   fontWeight={500}
                   className="mt-4"
-                  disabled={invalid}
+                  disabled={pristine}
                 />
               </form>
             )}
