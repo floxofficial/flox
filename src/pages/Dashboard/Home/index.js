@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Tab, Tabs } from 'react-bootstrap';
 
-import PrivateInfo from 'Root/Block/PrivateInfo';
-
 import Loading from 'Root/components/Loading';
+
 import Send from './Send';
 import Token from './Token';
 import Balance from './Balance';
@@ -15,6 +14,16 @@ import WalletPrivateInfo from "./WalletPrivateInfo";
 import styles from './styles.less';
 
 const Dashboard = (props) => {
+  const [refresh, setRefresh] = useState(false);
+  const [key, setKey] = useState('send');
+  useEffect(() => {
+    if(key === 'wallet') {
+      setRefresh(true);
+    } else {
+      setRefresh(false);
+    }
+  }, [key]);
+
   const { wallet } = props;
   const activeAccount = wallet.find((x) => x.active);
   // convert cfx to usd
@@ -27,7 +36,11 @@ const Dashboard = (props) => {
       <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
         <div className={classNames('content-card', styles.card)}>
           <div className={styles.tab}>
-            <Tabs defaultActiveKey="send" id="tab">
+            <Tabs
+                defaultActiveKey={key}
+                id="tab"
+                onSelect={(k) => setKey(k)}
+            >
               <Tab eventKey="send" title="Send">
                 <div className="mt-5 pt-2">
                   <Send />
@@ -45,8 +58,7 @@ const Dashboard = (props) => {
               </Tab>
               <Tab eventKey="wallet" title="Wallet info">
                 <div className="mt-5 pt-2">
-                  {/*<PrivateInfo activeAccount={activeAccount} />*/}
-                  <WalletPrivateInfo activeAccount={activeAccount}/>
+                  {refresh && <WalletPrivateInfo activeAccount={activeAccount}/>}
                 </div>
               </Tab>
             </Tabs>
