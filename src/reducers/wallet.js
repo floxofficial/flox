@@ -32,6 +32,17 @@ export default (state = [], action) => {
       ];
     }
 
+    case actions.account.CHANGE_EARNED_BALANCE: {
+      const activeAccount = state.find((x) => x.active);
+
+      return [
+        {
+          ...activeAccount,
+          earnedBalance: action.earnedBalance,
+        },
+      ];
+    }
+
     case actions.account.LOADED: {
       const activeAccount = state.find((x) => x.active);
 

@@ -6,6 +6,7 @@ import getStakingBalance from 'Root/helpers/dashboard/getStakingBalance';
 import getListTokens from 'Root/helpers/dashboard/getListTokens';
 import getTransactions from 'Root/helpers/dashboard/getTransactions';
 import getCurrentBalance from 'Root/helpers/dashboard/getCurrentBalance';
+import getDepositList from '../helpers/dashboard/getDepositList';
 
 export default (account, isAlreadyLoaded) =>
   new Promise((resolve) => {
@@ -19,6 +20,7 @@ export default (account, isAlreadyLoaded) =>
     const transactions = getTransactions(account);
     const listTokens = getListTokens(account);
     const stakingBalance = getStakingBalance(account);
+    const depositList = getDepositList(account);
     // const USDPrices = getUSDPrice();
     // const CFXPrice = getCFXPrice();
 
@@ -26,6 +28,7 @@ export default (account, isAlreadyLoaded) =>
       currentBalance,
       transactions,
       listTokens,
+      depositList,
       // USDPrices,
       // CFXPrice
     ]).then(() => {

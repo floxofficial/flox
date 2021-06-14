@@ -71,16 +71,16 @@ const Stake = ({ wallet }) => {
             <span>CFX</span>
           </div>
         </div>
-        {/* <div className={styles.balance}>
-        <div className={styles['balance-title']}>
-          Earned balance
-          <span>(APY 4%)</span>
+        <div className={styles.balance}>
+          <div className={styles['balance-title']}>
+            Earned balance
+            <span>(APY 4%)</span>
+          </div>
+          <div className={styles['balance-value']}>
+            {activeAccount.earnedBalance.toFixed(4)}
+            <span>CFX</span>
+          </div>
         </div>
-        <div className={styles['balance-value']}>
-          0.0112
-          <span>CFX</span>
-        </div>
-      </div> */}
       </div>
       <div className="row">
         <div className="col-12">
