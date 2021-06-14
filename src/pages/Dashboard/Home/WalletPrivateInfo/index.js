@@ -64,17 +64,21 @@ class WalletPrivateInfo extends Component {
           {this.state.checked ? (
             <div className={styles.container}>
               <PrivateInfo activeAccount={this.props.activeAccount} />
-              <div style={{ paddingTop: '5px' }}>
-                <ExportFile
-                  text="Download Keystore file"
-                  width={239}
-                  onClick={() => {
-                    dialog.showSaveDialog(currentWindow, options, (filename) => {
-                      fs.writeFileSync(filename, keystore, 'utf-8');
-                    });
-                  }}
-                />
-              </div>
+              {password ? (
+                <div style={{ paddingTop: '5px' }}>
+                  <ExportFile
+                    text="Download Keystore file"
+                    width={239}
+                    onClick={() => {
+                      dialog.showSaveDialog(currentWindow, options, (filename) => {
+                        fs.writeFileSync(filename, keystore, 'utf-8');
+                      });
+                    }}
+                  />
+                </div>
+              ) : (
+                ''
+              )}
             </div>
           ) : (
             <Form

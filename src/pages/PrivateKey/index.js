@@ -16,6 +16,10 @@ class PrivateKey extends Component {
   onSubmit(values) {
     const errors = {};
 
+    if (!values.password || values.password.length < 8) {
+      errors.password = 'Invalid password';
+    }
+
     if (!validatePrivateKey(fixPrivateKey(values.privateKey))) {
       errors.privateKey = 'Invalid privateKey';
 
@@ -50,6 +54,20 @@ class PrivateKey extends Component {
             validate={(values) => this.validateForm(values)}
             render={({ submitError, handleSubmit, invalid, pristine }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
+                <label className="label-primary">Password</label>
+
+                <Field name="password">
+                  {({ input, meta }) => (
+                    <Input
+                      type="password"
+                      placeholder="Enter a password"
+                      variant="pass"
+                      input={input}
+                      meta={meta}
+                    />
+                  )}
+                </Field>
+
                 <label className="label-primary">PrivateKey</label>
 
                 <Field name="privateKey">
