@@ -67,7 +67,7 @@ class WalletPrivateInfo extends Component {
               <div style={{ paddingTop: '5px' }}>
                 <ExportFile
                   text="Download Keystore file"
-                  width={190}
+                  width={239}
                   onClick={() => {
                     dialog.showSaveDialog(currentWindow, options, (filename) => {
                       fs.writeFileSync(filename, keystore, 'utf-8');
