@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
-import {OverlayTrigger, Tooltip} from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import classNames from 'classnames';
 
 import Input from 'Root/components/Input';
@@ -65,9 +65,10 @@ const Stake = ({ wallet }) => {
   };
 
   const renderTooltip = (props) => (
-      <Tooltip id="max-tooltip" {...props}>
-        Staked interest will be automatically withdrawn to your wallet address every time you unstake.
-      </Tooltip>
+    <Tooltip id="max-tooltip" {...props}>
+      Staked interest will be automatically withdrawn to your wallet address every time
+      you unstake.
+    </Tooltip>
   );
 
   return (
@@ -75,7 +76,7 @@ const Stake = ({ wallet }) => {
       <div className="row">
         <div className="col-xl-9 col-lg-11 col-md-12 col-sm-12 col-12 d-flex">
           <div className={styles.balance}>
-            <div className={styles['balance-title']}>Stake balance</div>
+            <div className={styles['balance-title']}>Staked balance</div>
             <div className={styles['balance-value']}>
               {activeAccount.stakingBalance}
               <span>CFX</span>
@@ -86,7 +87,13 @@ const Stake = ({ wallet }) => {
               Earned balance
               <span>(APY 4%)</span>
               <OverlayTrigger placement="top" overlay={renderTooltip}>
-                <img src={questionIcon} height={12} width={12} className={styles.icon} alt="question" />
+                <img
+                  src={questionIcon}
+                  height={12}
+                  width={12}
+                  className={styles.icon}
+                  alt="question"
+                />
               </OverlayTrigger>
             </div>
             <div className={styles['balance-value']}>
