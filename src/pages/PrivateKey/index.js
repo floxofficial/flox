@@ -36,10 +36,6 @@ class PrivateKey extends Component {
     if (result) {
       return this.props.history.push(dashboardPage);
     }
-
-    return {
-      privateKey: 'Invalid privateKey',
-    };
   }
 
   validateForm(values) {}
@@ -55,30 +51,32 @@ class PrivateKey extends Component {
             render={({ submitError, handleSubmit, invalid, pristine }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <label className="label-primary">Password</label>
-
                 <Field name="password">
                   {({ input, meta }) => (
-                    <Input
-                      type="password"
-                      placeholder="Enter a password"
-                      variant="pass"
-                      input={input}
-                      meta={meta}
-                    />
+                    <>
+                        <Input
+                            type="password"
+                            placeholder="Enter a password"
+                            variant="pass"
+                            input={input}
+                            meta={meta}
+                        />
+                    </>
                   )}
                 </Field>
 
                 <label className="label-primary">PrivateKey</label>
-
                 <Field name="privateKey">
                   {({ input, meta }) => (
-                    <Input
-                      type="password"
-                      placeholder="Enter your privateKey here"
-                      variant="pass"
-                      input={input}
-                      meta={meta}
-                    />
+                      <>
+                        <Input
+                          type="password"
+                          placeholder="Enter your privateKey here"
+                          variant="pass"
+                          input={input}
+                          meta={meta}
+                        />
+                      </>
                   )}
                 </Field>
 
