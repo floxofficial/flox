@@ -22,7 +22,9 @@ class PrivateKey extends Component {
 
     if (!validatePrivateKey(fixPrivateKey(values.privateKey))) {
       errors.privateKey = 'Invalid privateKey';
+    }
 
+    if (errors.password || errors.privateKey) {
       return errors;
     }
 
@@ -54,13 +56,13 @@ class PrivateKey extends Component {
                 <Field name="password">
                   {({ input, meta }) => (
                     <>
-                        <Input
-                            type="password"
-                            placeholder="Enter a password"
-                            variant="pass"
-                            input={input}
-                            meta={meta}
-                        />
+                      <Input
+                        type="password"
+                        placeholder="Enter a password"
+                        variant="pass"
+                        input={input}
+                        meta={meta}
+                      />
                     </>
                   )}
                 </Field>
@@ -68,15 +70,15 @@ class PrivateKey extends Component {
                 <label className="label-primary">PrivateKey</label>
                 <Field name="privateKey">
                   {({ input, meta }) => (
-                      <>
-                        <Input
-                          type="password"
-                          placeholder="Enter your privateKey here"
-                          variant="pass"
-                          input={input}
-                          meta={meta}
-                        />
-                      </>
+                    <>
+                      <Input
+                        type="password"
+                        placeholder="Enter your privateKey here"
+                        variant="pass"
+                        input={input}
+                        meta={meta}
+                      />
+                    </>
                   )}
                 </Field>
 
