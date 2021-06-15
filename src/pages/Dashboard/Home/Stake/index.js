@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
+import classNames from 'classnames';
 
 import Input from 'Root/components/Input';
 import Button from 'Root/components/Button';
@@ -63,22 +64,24 @@ const Stake = ({ wallet }) => {
 
   return (
     <>
-      <div className="d-flex">
-        <div className={styles.balance}>
-          <div className={styles['balance-title']}>Stake balance</div>
-          <div className={styles['balance-value']}>
-            {activeAccount.stakingBalance}
-            <span>CFX</span>
+      <div className="row">
+        <div className="col-xl-9 col-lg-11 col-md-12 col-sm-12 col-12 d-flex">
+          <div className={styles.balance}>
+            <div className={styles['balance-title']}>Stake balance</div>
+            <div className={styles['balance-value']}>
+              {activeAccount.stakingBalance}
+              <span>CFX</span>
+            </div>
           </div>
-        </div>
-        <div className={styles.balance}>
-          <div className={styles['balance-title']}>
-            Earned balance
-            <span>(APY 4%)</span>
-          </div>
-          <div className={styles['balance-value']}>
-            {activeAccount.earnedBalance.toFixed(4)}
-            <span>CFX</span>
+          <div className={classNames(styles.balance, 'ml-3')}>
+            <div className={styles['balance-title']}>
+              Earned balance
+              <span>(APY 4%)</span>
+            </div>
+            <div className={styles['balance-value']}>
+              {activeAccount.earnedBalance.toFixed(4)}
+              <span>CFX</span>
+            </div>
           </div>
         </div>
       </div>
