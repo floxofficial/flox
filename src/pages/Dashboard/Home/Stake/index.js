@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
+import {OverlayTrigger, Tooltip} from 'react-bootstrap';
 import classNames from 'classnames';
 
 import Input from 'Root/components/Input';
@@ -10,6 +11,7 @@ import stakeAction from 'Root/helpers/dashboard/stake';
 import StatusModal from 'Root/Block/ModalContent/StatusModal';
 import WaitingModal from 'Root/Block/ModalContent/WaitingModal';
 import ModalDialog from 'Root/components/ModalDialog';
+import questionIcon from 'Root/assets/images/qustion-circle.svg';
 
 import styles from './styles.less';
 
@@ -62,6 +64,12 @@ const Stake = ({ wallet }) => {
     setMethod(e);
   };
 
+  const renderTooltip = (props) => (
+      <Tooltip id="max-tooltip" {...props}>
+        Staked interest will be automatically withdrawn to your wallet address every time you unstake.
+      </Tooltip>
+  );
+
   return (
     <>
       <div className="row">
@@ -77,6 +85,9 @@ const Stake = ({ wallet }) => {
             <div className={styles['balance-title']}>
               Earned balance
               <span>(APY 4%)</span>
+              <OverlayTrigger placement="top" overlay={renderTooltip}>
+                <img src={questionIcon} height={12} width={12} className={styles.icon} alt="question" />
+              </OverlayTrigger>
             </div>
             <div className={styles['balance-value']}>
               {activeAccount.earnedBalance.toFixed(4)}
