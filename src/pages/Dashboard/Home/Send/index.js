@@ -101,7 +101,7 @@ class Send extends Component {
       const amountFloat = values.amount ? parseFloat(values.amount) : 0;
 
       if (amountFloat > tokenBalance || amountFloat === 0) {
-        errors.amount = 'Insufficient amount.';
+        errors.amount = 'Insufficient balance.';
       }
     }
 
@@ -217,7 +217,7 @@ class Send extends Component {
                   onClick={() => this.onShowAdvance()}
                   content={
                     <>
-                      <span>Advance</span>
+                      <span>Advanced</span>
                       <span
                         className={classNames(
                           'icon-caret-down',
