@@ -1,5 +1,5 @@
 {
-  "name": "flox",
+  "name": "Flox",
   "version": "0.0.4",
   "description": "Flox",
   "main": "build/electron.js",
@@ -11,7 +11,7 @@
     "package:macos": "./node_modules/.bin/electron-packager ./ Flox --platform=darwin --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.icns --out=dist --overwrite",
     "package:linux": "./node_modules/.bin/electron-packager ./ Flox --platform=linux --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.png --out=dist --overwrite",
     "package:windows": "electron-packager . Flox --platform=win32 --asar --arch=x64 --icon=./src/assets/logo/Flox-icon-256.ico --out=dist --overwrite",
-    "build:dmg": "./node_modules/.bin/electron-installer-dmg ./dist/Flox-darwin-x64/flox.app Flox --icon=./src/assets/logo/Flox-icon-256.icns --out=./dist/installers/ --title=flox --overwrite",
+    "build:dmg": "./node_modules/.bin/electron-installer-dmg ./dist/Flox-darwin-x64/Flox.app Flox --icon=./src/assets/logo/Flox-icon-256.icns --out=./dist/installers/ --title=Flox --overwrite",
     "build:deb": "./node_modules/.bin/electron-installer-debian --arch amd64 --config ./packager/deb.json",
     "build:rpm": "./node_modules/.bin/electron-installer-redhat --src ./dist/Flox-linux-x64 --arch x86_64 --config ./packager/rpm.json",
     "build:flatpak": "./node_modules/.bin/electron-installer-flatpak --src ./dist/Flox-linux-x64 --arch x86_64 --config ./packager/flatpak.json",
