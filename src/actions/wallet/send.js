@@ -23,7 +23,7 @@ export default async (transaction) => {
     const params = {
       from: account.address,
       to: transaction.to,
-      value: parseFloat(transaction.amount) * 1000000000000000000,
+      value: parseInt(parseFloat(transaction.amount) * 1000000000000000000),
     };
 
     if (transaction.gasPrice) {
@@ -48,7 +48,7 @@ export default async (transaction) => {
   });
 
   const hash = await contract
-    .transfer(transaction.to, BigInt(parseFloat(transaction.amount) * 1000000000000000000))
+    .transfer(transaction.to, BigInt(parseInt(parseFloat(transaction.amount) * 1000000000000000000)))
     .sendTransaction({ from: account.address });
 
   return hash;
