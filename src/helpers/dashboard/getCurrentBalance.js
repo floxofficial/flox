@@ -2,6 +2,7 @@ import store from 'Root/store';
 import types from 'Root/actions';
 
 import conflux from 'Root/helpers/conflux';
+import formatCurrency from '../formatCurrency';
 import bigIntToNumber from 'Root/helpers/bigIntToNumber';
 
 export default async (account) => {
@@ -9,7 +10,7 @@ export default async (account) => {
 
   store.dispatch({
     type: types.account.CHANGE_BALANCE,
-    balance: bigIntToNumber(balance),
+    balance: formatCurrency(bigIntToNumber(balance)),
   });
 
   return true;

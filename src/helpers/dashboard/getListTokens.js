@@ -7,13 +7,16 @@ import erc20abi from 'Root/static/erc20-abi.json';
 import erc20main from 'Root/static/tokens/erc20main.json';
 import erc20test from 'Root/static/tokens/erc20test.json';
 
+import bigIntToNumber from '../bigIntToNumber';
+import formatCurrency from '../formatCurrency';
+
 const getTokenDetails = async (token, contract, address) => {
   try {
     const balance = await contract.balanceOf(address);
 
     return {
       ...token,
-      balance,
+      balance: formatCurrency(bigIntToNumber(balance)),
     };
   } catch (e) {
     return {

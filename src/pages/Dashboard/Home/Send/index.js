@@ -83,7 +83,7 @@ class Send extends Component {
     const { selectedValue } = this.state;
     const selectedToken = tokens.find((x) => x.symbol === selectedValue.value);
     const tokenBalance =
-      selectedValue.value === 'CFX' ? wallet[0].balance : bigIntToNumber(selectedToken.balance);
+      selectedValue.value === 'CFX' ? wallet[0].balance : selectedToken.balance;
 
     // if (!values.address) {
     //   errors.address = 'Address is required.';
@@ -134,7 +134,7 @@ class Send extends Component {
                   maxBalance = wallet[0].balance;
                 } else {
                   const { balance } = tokens.find((x) => x.symbol === selectedValue.value);
-                  maxBalance = bigIntToNumber(balance);
+                  maxBalance = balance;
                 }
 
                 utils.changeValue(state, 'amount', () => maxBalance);

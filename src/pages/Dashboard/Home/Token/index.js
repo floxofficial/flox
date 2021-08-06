@@ -93,7 +93,7 @@ const Token = ({ tokens }) => {
                 </div>
 
                 <div className={classNames('col-auto', styles.value)}>
-                  {bigIntToNumber(token.balance)}
+                  {token.balance}
                   {/* &nbsp;
                 {token.price
                   ? `$${parseFloat(token.price) * bigIntToNumber(token.balance)}`
